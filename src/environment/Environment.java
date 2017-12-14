@@ -44,8 +44,8 @@ public class Environment {
         Random r = new Random();
         int lowerBoundX = center.X() - boundXY/2;
         int lowerBoundY = center.Y() - boundXY/2;
-        int fuzzyX = r.nextInt(lowerBoundX + boundXY);
-        int fuzzyY = r.nextInt(lowerBoundY + boundXY);
+        int fuzzyX = r.nextInt(boundXY) + lowerBoundX;
+        int fuzzyY = r.nextInt(boundXY) + lowerBoundY;
 
         return new Coordinate(fuzzyX, fuzzyY);
     }
