@@ -17,9 +17,20 @@ public class Environment {
         apisSwarm = new Swarm();
     }
 
+    /**
+     * Creates agents on environment and maps them to an initial position
+     */
     public void Populate(){
+        Coordinate populationCenter = new Coordinate(
+                SimulationDefaults.ENVIRONMENT_SIZE/2,
+                SimulationDefaults.ENVIRONMENT_SIZE/2
+        ); //Get the center of the environment
+
+        //Create apids and add them to swarm
         for(int i = 0; i<= apisSwarm.getSwarmSize(); i++){
-            Apid apid = new Apid();
+            Coordinate location = generateFuzzyCoordinate(populationCenter, SimulationDefaults.SWARM_DEPLOYMENT_AREA);
+            Apid apid = new Apid(location);
+            apisSwarm.addAgent(apid, i); //Add Apid at index i
         }
     }
 
