@@ -31,12 +31,12 @@ public class Environment {
 
     /**
      * Creates agents on environment and maps them to an initial position
-     * @param  argsPopulation
+     * @param  argsPopulation deployment area size, swarm size
      */
     public void Populate(int... argsPopulation) throws IllegalArgumentException{
         long startTime = System.nanoTime();
-        int deploymentArea;
         //optional configuration for deployment area
+        int deploymentArea;
         if(argsPopulation.length > 0){
             if(argsPopulation[0] > 0){
                 deploymentArea = argsPopulation[0];
@@ -46,6 +46,17 @@ public class Environment {
         }
         else{
             deploymentArea = SimulationDefaults.SWARM_DEPLOYMENT_AREA;
+        }
+        //Optional configs for swarm size
+        if(argsPopulation.length > 1){
+            if(argsPopulation[1] > 0){
+                this.apidSwarm = new Swarm(argsPopulation[1]);
+            } else{
+                throw new IllegalArgumentException("Swarm size must be greater than 0");
+            }
+        }
+        else{
+            this.apidSwarm = new Swarm(SimulationDefaults.SWARM_SIZE);
         }
 
 
