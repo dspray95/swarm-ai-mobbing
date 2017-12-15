@@ -2,7 +2,6 @@ package environment;
 
 import agent.Apid;
 import agent.swarm.Swarm;
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import config.SimulationDefaults;
 
 import java.util.Random;
@@ -20,8 +19,7 @@ public class Environment {
                 this.apidSwarm = new Swarm(argSwarmSize[0]);
             }
             catch(ArrayIndexOutOfBoundsException e){
-                String e = new String[]{"optional swarm size must be greater than 0"};
-                throw new IllegalArgumentException(e);
+                throw new IllegalArgumentException( "optional swarm size must be greater than 0");
             }
         }
         else{
@@ -33,17 +31,23 @@ public class Environment {
 
     /**
      * Creates agents on environment and maps them to an initial position
-     * @param  argDeploymentArea
+     * @param  argsPopulation
      */
-    public void Populate(int... argDeploymentArea){
+    public void Populate(int... argsPopulation) throws IllegalArgumentException{
+        long startTime = System.nanoTime();
         int deploymentArea;
         //optional configuration for deployment area
-        if(argDeploymentArea.length > 0){
-            deploymentArea = argDeploymentArea[0];
+        if(argsPopulation.length > 0){
+            if(argsPopulation[0] > 0){
+                deploymentArea = argsPopulation[0];
+            } else{
+                throw new IllegalArgumentException("Deployment area must be greater than 0");
+            }
         }
         else{
             deploymentArea = SimulationDefaults.SWARM_DEPLOYMENT_AREA;
         }
+
 
         Coordinate populationCenter = new Coordinate(
                 environmentSize/2,
@@ -55,7 +59,7 @@ public class Environment {
             Coordinate location;
             try {
                  location = generateFuzzyCoordinate(populationCenter, deploymentArea);
-            }catch(InvalidArgumentException e){
+            }catch(IllegalArgumentException e){
                 System.out.print(e);
                 return;
                 //TODO error recovery
@@ -63,6 +67,9 @@ public class Environment {
             Apid apid = new Apid(location);
             apidSwarm.addAgent(apid, i); //Add Apid at index i
         }
+
+        long endTime = System.nanoTime();
+        System.out.println("Populated in: " + (endTime - startTime) + "ns"); //TODO Log
     }
 
     /**
@@ -71,12 +78,12 @@ public class Environment {
      * @param boundXY size of the bounding square
      * @return a random coordinate inside the bounding square
      */
-    public Coordinate generateFuzzyCoordinate (Coordinate center, int boundXY) throws InvalidArgumentException{
+    public Coordinate generateFuzzyCoordinate (Coordinate center, int boundXY) throws IllegalArgumentException{
 
         //Ensure that the center of the bound is inside the environment area
         if(center.X() < 0 || center.Y() < 0 || boundXY < 0){
-            String[] err = new String[]{"Center coordinates and boundXY must be positive"};
-            throw new InvalidArgumentException(err);
+            String err = "Center coordinates and boundXY must be positive";
+            throw new IllegalArgumentException(err);
         }
 
         int boundX = boundXY;

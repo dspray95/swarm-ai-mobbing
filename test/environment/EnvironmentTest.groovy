@@ -2,7 +2,6 @@ package environment
 
 import agent.Agent
 import agent.swarm.Swarm
-import com.sun.javaws.exceptions.InvalidArgumentException
 import config.SimulationDefaults
 
 class EnvironmentTest extends GroovyTestCase {
@@ -29,12 +28,17 @@ class EnvironmentTest extends GroovyTestCase {
     void testPopulateInvalidArgs(){
         try{
             environment.Populate(-50);
-        }catch(InvalidArgumentException e){
+        }catch(IllegalArgumentException e){
             assertTrue(true);
         }
     }
-    void testPopulatePosition() {
 
+    void testPopulateValidArgs(){
+        try{
+            environment.Populate(500);
+        }catch(IllegalArgumentException e){
+            assertTrue(true);
+        }
     }
 
     void testGenerateFuzzyCoordinate() {
