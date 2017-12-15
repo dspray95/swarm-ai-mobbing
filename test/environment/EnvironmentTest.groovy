@@ -1,5 +1,9 @@
 package environment
 
+import agent.Agent
+import agent.swarm.Swarm
+import config.SimulationDefaults
+
 class EnvironmentTest extends GroovyTestCase {
 
     private Environment environment;
@@ -13,7 +17,15 @@ class EnvironmentTest extends GroovyTestCase {
         environment = null;
     }
 
-    void testPopulate() {
+    void testPopulateCreation() {
+        environment.Populate();
+        Swarm swarm = environment.getApidSwarm();
+        Agent agent = swarm.agents[SimulationDefaults.SWARM_SIZE - 1];
+        assertTrue(agent != null);  //Assert that the last entry in the swarm Agent[] array exists
+    }
+
+    void testPopulatePosition() {
+
     }
 
     void testGenerateFuzzyCoordinate() {

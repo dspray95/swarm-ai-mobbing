@@ -3,14 +3,10 @@ package agent.swarm;
 import agent.Agent;
 import config.SimulationDefaults;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Swarm {
 
-    Agent[] swarm;
-    int swarmSize;
+    private Agent[] swarm;
+    private int swarmSize;
 
     public Swarm(){
         swarmSize = SimulationDefaults.SWARM_SIZE;
@@ -26,6 +22,6 @@ public class Swarm {
         swarm[index] = agent;
     }
 
-    public Agent[] getSwarm(){return this.swarm;}
+    public Agent[] getAgents(){return this.swarm;}
     public int getSwarmSize(){ return this.swarmSize; }
 }
