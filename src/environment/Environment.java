@@ -10,26 +10,56 @@ import java.util.Random;
 public class Environment {
 
     private Space[][] environmentMap;
+    private int environmentSize;
     private Swarm apidSwarm;
 
-    public Environment(){
-        int environmentSize = SimulationDefaults.ENVIRONMENT_SIZE;
-        this.environmentMap = new Space[environmentSize][environmentSize];
-        apidSwarm = new Swarm();
+    public Environment(int... argSwarmSize) throws IllegalArgumentException{
+        //optional configuration for swarm size
+        if(argSwarmSize.length > 0){
+            try{
+                this.apidSwarm = new Swarm(argSwarmSize[0]);
+            }
+            catch(ArrayIndexOutOfBoundsException e){
+                String e = new String[]{"optional swarm size must be greater than 0"};
+                throw new IllegalArgumentException(e);
+            }
+        }
+        else{
+            this.apidSwarm = new Swarm();
+        }
+        this.environmentSize = SimulationDefaults.ENVIRONMENT_SIZE;
+        this.environmentMap = new Space[this.environmentSize][this.environmentSize];
     }
 
     /**
      * Creates agents on environment and maps them to an initial position
+     * @param  argDeploymentArea
      */
-    public void Populate(){
+    public void Populate(int... argDeploymentArea){
+        int deploymentArea;
+        //optional configuration for deployment area
+        if(argDeploymentArea.length > 0){
+            deploymentArea = argDeploymentArea[0];
+        }
+        else{
+            deploymentArea = SimulationDefaults.SWARM_DEPLOYMENT_AREA;
+        }
+
         Coordinate populationCenter = new Coordinate(
-                SimulationDefaults.ENVIRONMENT_SIZE/2,
-                SimulationDefaults.ENVIRONMENT_SIZE/2
+                environmentSize/2,
+                environmentSize/2
         ); //Get the center of the environment
 
-        //Create apids and add them to swarm
+        //Create apidae and add them to swarm
         for(int i = 0; i < apidSwarm.getSwarmSize(); i++){
-            Coordinate location = generateFuzzyCoordinate(populationCenter, SimulationDefaults.SWARM_DEPLOYMENT_AREA);
+            Coordinate location;
+            try {
+                 location = generateFuzzyCoordinate(populationCenter, deploymentArea);
+            }catch(InvalidArgumentException e){
+                System.out.print(e);
+                return;
+                //TODO error recovery
+            }
             Apid apid = new Apid(location);
             apidSwarm.addAgent(apid, i); //Add Apid at index i
         }
@@ -42,7 +72,7 @@ public class Environment {
      * @return a random coordinate inside the bounding square
      */
     public Coordinate generateFuzzyCoordinate (Coordinate center, int boundXY) throws InvalidArgumentException{
-        Random r = new Random();
+
         //Ensure that the center of the bound is inside the environment area
         if(center.X() < 0 || center.Y() < 0 || boundXY < 0){
             String[] err = new String[]{"Center coordinates and boundXY must be positive"};
@@ -53,19 +83,17 @@ public class Environment {
         int boundY = boundXY;
         int lowerBoundX = center.X() - boundX/2;
         int lowerBoundY = center.Y() - boundY/2;
-
-        //First check to see if we might accidentally try to deploy outside the environment
-        if(lowerBoundX + boundX > SimulationDefaults.ENVIRONMENT_SIZE){
-            boundX = SimulationDefaults.ENVIRONMENT_SIZE - lowerBoundX;
+        //check to see if we might accidentally try to deploy outside the environment
+        //If true limit the bound to the edge of the environment
+        if(lowerBoundX + boundX > environmentSize){
+            boundX = environmentSize - lowerBoundX;
         }
-        if(lowerBoundY + boundY > SimulationDefaults.ENVIRONMENT_SIZE){
-            boundY = SimulationDefaults.ENVIRONMENT_SIZE - lowerBoundY;
+        if(lowerBoundY + boundY > environmentSize){
+            boundY = environmentSize - lowerBoundY;
         }
-
-        int fuzzyX = r.nextInt(boundX) + lowerBoundX;
-        int fuzzyY = r.nextInt(boundY) + lowerBoundY;
-
-        return new Coordinate(fuzzyX, fuzzyY);
+        //Return a new coordinate with random x and y variable within the bounding box
+        Random r = new Random();
+        return new Coordinate(r.nextInt(boundX) + lowerBoundX, r.nextInt(boundY) + lowerBoundY);
     }
 
     public Swarm getApidSwarm(){return this.apidSwarm;}

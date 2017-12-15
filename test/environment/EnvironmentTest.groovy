@@ -2,6 +2,7 @@ package environment
 
 import agent.Agent
 import agent.swarm.Swarm
+import com.sun.javaws.exceptions.InvalidArgumentException
 import config.SimulationDefaults
 
 class EnvironmentTest extends GroovyTestCase {
@@ -21,9 +22,17 @@ class EnvironmentTest extends GroovyTestCase {
         environment.Populate();
         Swarm swarm = environment.getApidSwarm();
         Agent agent = swarm.agents[SimulationDefaults.SWARM_SIZE - 1];
-        assertTrue(agent != null);  //Assert that the last entry in the swarm Agent[] array exists
+        assertNotNull(agent);  //Assert that the last entry in the swarm Agent[] array exists
     }
 
+    //Passes if the function recognises the deployment area argument as invalid
+    void testPopulateInvalidArgs(){
+        try{
+            environment.Populate(-50);
+        }catch(InvalidArgumentException e){
+            assertTrue(true);
+        }
+    }
     void testPopulatePosition() {
 
     }
