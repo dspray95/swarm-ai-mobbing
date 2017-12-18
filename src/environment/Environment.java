@@ -58,18 +58,16 @@ public class Environment {
         else{
             this.apidSwarm = new Swarm(SimulationDefaults.SWARM_SIZE);
         }
-
-
-        Coordinate populationCenter = new Coordinate(
+        //Get the center of the environment
+        Coordinate environmentCenter = new Coordinate(
                 environmentSize/2,
                 environmentSize/2
-        ); //Get the center of the environment
-
+        );
         //Create apidae and add them to swarm
         for(int i = 0; i < apidSwarm.getSwarmSize(); i++){
             Coordinate location;
             try {
-                 location = generateFuzzyCoordinate(populationCenter, deploymentArea);
+                 location = generateFuzzyCoordinate(environmentCenter, deploymentArea);
             }catch(IllegalArgumentException e){
                 System.out.print(e);
                 return;
