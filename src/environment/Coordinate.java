@@ -1,8 +1,19 @@
 package environment;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class Coordinate {
+
+    public static final Collection<Coordinate> VECTOR_NEIGHBOURS = Arrays.asList(
+            new Coordinate(  0, -1 ),   // top
+            new Coordinate( +1, -1 ),   // right-top
+            new Coordinate( +1,  0 ),   // right-middle
+            new Coordinate(  0, +1 ),   // bottom
+            new Coordinate( -1, +1 ),   // left-bottom
+            new Coordinate( -1,  0 ),   // left-middle
+            new Coordinate( +1, +1 ),   // right-bottom
+            new Coordinate( -1, -1 )    // left-top
+    );
 
     private int y;
     private int x;
@@ -13,6 +24,26 @@ public class Coordinate {
         this.setXY(x, y);
     }
 
+    /**
+     * Creates a list of all adjacent nodes to this coordinate in 8 directions
+     * @return adjacent nodes
+     */
+    public List<Coordinate> getNeighbours(){
+        List<Coordinate> neighbours = new ArrayList<Coordinate>();
+        for(Coordinate vector : Coordinate.VECTOR_NEIGHBOURS){
+            neighbours.add(vectorMove(vector));
+        }
+        return neighbours;
+    }
+
+    /**
+     * Move this coordinate by a given vector
+     * @param vector Coordinate by which to move
+     * @return new coordinate modified by vector
+     */
+    private Coordinate vectorMove(Coordinate vector){
+        return new Coordinate(x + vector.X(), y + vector.Y());
+    }
 
     public int Y(){
         return this.y;
