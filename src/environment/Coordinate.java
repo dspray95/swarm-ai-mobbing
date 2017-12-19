@@ -28,8 +28,8 @@ public class Coordinate {
      * Creates a list of all adjacent nodes to this coordinate in 8 directions
      * @return adjacent nodes
      */
-    public List<Coordinate> getNeighbours(){
-        List<Coordinate> neighbours = new ArrayList<Coordinate>();
+    public ArrayList<Coordinate> getNeighbours(){
+        ArrayList<Coordinate> neighbours = new ArrayList<Coordinate>();
         for(Coordinate vector : Coordinate.VECTOR_NEIGHBOURS){
             neighbours.add(vectorMove(vector));
         }
