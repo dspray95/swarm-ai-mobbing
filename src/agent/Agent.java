@@ -1,10 +1,20 @@
 package agent;
 
+import agent.module.pathfinding.Pathfinder;
+
 public abstract class Agent {
-    private int hitpoints;
-    private int speed;
-    private double heatResistance;
-    private double aggression;
+
+    int hitpoints;
+    int speed;
+    double heatResistance;
+    double aggression;
+
+    //Modules
+    private Pathfinder pathfinder;
+
+    public Agent(){
+        pathfinder = new Pathfinder();
+    }
 
     public int getSpeed() {
         return speed;

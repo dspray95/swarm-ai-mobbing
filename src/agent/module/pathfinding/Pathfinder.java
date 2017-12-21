@@ -23,14 +23,16 @@ public class Pathfinder {
         Double bestDistance = 0d;
         boolean testingInitialised = false;
         for(Coordinate coordinate : neighbours){
+            double eucDistance = EuclideanDistance(coordinate, target);
             if(testingInitialised){
-                if(EuclideanDistance(coordinate, target) < bestDistance){
-                    bestDistance = EuclideanDistance(coordinate, target);
+                if(eucDistance < bestDistance){
+                    bestDistance = eucDistance;
                     bestCoordinate = coordinate;
                 }
             } else{
-              bestDistance = EuclideanDistance(coordinate, target);
+              bestDistance = eucDistance;
               bestCoordinate = coordinate;
+              testingInitialised = true;
             }
         }
         return bestCoordinate;
@@ -45,7 +47,7 @@ public class Pathfinder {
      */
     public double EuclideanDistance(Coordinate a, Coordinate b) {
         double x = Math.pow(a.X() - b.X(), 2);
-        double y = Math.pow(a.X() - b.Y(), 2);
+        double y = Math.pow(a.Y() - b.Y(), 2);
         return Math.sqrt(x + y);
     }
 }

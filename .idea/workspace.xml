@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="909ef0fc-9796-4906-9b36-3c04e5beaf2b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/swarm-ai-mobbing/agent/Agent.class" afterPath="$PROJECT_DIR$/out/production/swarm-ai-mobbing/agent/Agent.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/swarm-ai-mobbing/agent/Apid.class" afterPath="$PROJECT_DIR$/out/production/swarm-ai-mobbing/agent/Apid.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/swarm-ai-mobbing/config/Defines.class" afterPath="$PROJECT_DIR$/out/production/swarm-ai-mobbing/config/Defines.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/swarm-ai-mobbing/environment/Coordinate.class" afterPath="$PROJECT_DIR$/out/production/swarm-ai-mobbing/environment/Coordinate.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/swarm-ai-mobbing/environment/Environment.class" afterPath="$PROJECT_DIR$/out/production/swarm-ai-mobbing/environment/Environment.class" />
-      <change beforePath="$PROJECT_DIR$/src/agent/module/MovementModule.java" afterPath="$PROJECT_DIR$/src/agent/module/MovementModule.java" />
+      <change beforePath="$PROJECT_DIR$/src/agent/Agent.java" afterPath="$PROJECT_DIR$/src/agent/Agent.java" />
+      <change beforePath="$PROJECT_DIR$/src/agent/Apid.java" afterPath="$PROJECT_DIR$/src/agent/Apid.java" />
       <change beforePath="$PROJECT_DIR$/src/agent/module/pathfinding/Pathfinder.java" afterPath="$PROJECT_DIR$/src/agent/module/pathfinding/Pathfinder.java" />
+      <change beforePath="$PROJECT_DIR$/src/config/SimulationDefaults.java" afterPath="$PROJECT_DIR$/src/config/SimulationDefaults.java" />
+      <change beforePath="$PROJECT_DIR$/test/agent/module/pathfinding/PathfinderTest.groovy" afterPath="$PROJECT_DIR$/test/agent/module/pathfinding/PathfinderTest.groovy" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,18 +21,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Environment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/environment/Environment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1768">
-              <caret line="108" column="9" lean-forward="false" selection-start-line="108" selection-start-column="9" selection-end-line="108" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="EnvironmentTest.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/environment/EnvironmentTest.groovy">
           <provider selected="true" editor-type-id="text-editor">
@@ -51,21 +36,11 @@
       <file leaf-file-name="Apid.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agent/Apid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+            <state relative-caret-position="326">
+              <caret line="21" column="33" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="21" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimulationDefaults.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/config/SimulationDefaults.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -94,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Pathfinder.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Pathfinder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agent/module/pathfinding/Pathfinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+            <state relative-caret-position="-6">
+              <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,8 +84,8 @@
       <file leaf-file-name="PathfinderTest.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/agent/module/pathfinding/PathfinderTest.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11">
-              <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+            <state relative-caret-position="156">
+              <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -138,12 +113,34 @@
       <file leaf-file-name="Agent.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agent/Agent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            <state relative-caret-position="153">
+              <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
               <folding>
-                <element signature="e#189#190#0" expanded="true" />
-                <element signature="e#217#218#0" expanded="true" />
+                <element signature="e#245#246#0" expanded="true" />
+                <element signature="e#290#291#0" expanded="true" />
+                <element signature="e#319#320#0" expanded="true" />
+                <element signature="e#347#348#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vespid.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/agent/Vespid.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimulationDefaults.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/config/SimulationDefaults.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="44" lean-forward="true" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -172,20 +169,27 @@
         <option value="$PROJECT_DIR$/src/config/SimulationOptions.java" />
         <option value="$PROJECT_DIR$/src/agent/Apis.java" />
         <option value="$PROJECT_DIR$/src/agent/swarm/Swarm.java" />
-        <option value="$PROJECT_DIR$/src/config/SimulationDefaults.java" />
         <option value="$PROJECT_DIR$/test/environment/EnvironmentTest.groovy" />
         <option value="$PROJECT_DIR$/src/environment/Environment.java" />
         <option value="$PROJECT_DIR$/src/agent/module/Prey/Prey.java" />
         <option value="$PROJECT_DIR$/src/agent/module/Movement.java" />
         <option value="$PROJECT_DIR$/src/config/Defines.java" />
-        <option value="$PROJECT_DIR$/src/agent/Apid.java" />
-        <option value="$PROJECT_DIR$/src/agent/Agent.java" />
         <option value="$PROJECT_DIR$/src/environment/Coordinate.java" />
         <option value="$PROJECT_DIR$/src/agent/module/MovementModule.java" />
-        <option value="$PROJECT_DIR$/src/agent/module/pathfinding/Pathfinder.java" />
         <option value="$PROJECT_DIR$/test/agent/module/pathfinding/PathfinderTest.groovy" />
+        <option value="$PROJECT_DIR$/src/agent/module/pathfinding/Pathfinder.java" />
+        <option value="$PROJECT_DIR$/src/agent/Agent.java" />
+        <option value="$PROJECT_DIR$/src/agent/Apid.java" />
+        <option value="$PROJECT_DIR$/src/agent/Vespid.java" />
+        <option value="$PROJECT_DIR$/src/config/SimulationDefaults.java" />
       </list>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
@@ -238,14 +242,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="agent" type="462c0819:PsiDirectoryNode" />
               <item name="module" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="swarm-ai-mobbing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="swarm-ai-mobbing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="agent" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="pathfinding" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="swarm-ai-mobbing" type="b2602c69:ProjectViewProjectNode" />
@@ -436,34 +432,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 02m 18s.xml">
+    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 13m 10s.xml">
       <configuration name="C:\Users\User\IdeaProjects\swarm-ai-mobbing\test in swarm-ai-mobbing" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 02m 26s.xml">
+    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 13m 12s.xml">
       <configuration name="C:\Users\User\IdeaProjects\swarm-ai-mobbing\test in swarm-ai-mobbing" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 03m 50s.xml">
+    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 13m 26s.xml">
       <configuration name="C:\Users\User\IdeaProjects\swarm-ai-mobbing\test in swarm-ai-mobbing" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 03m 51s.xml">
+    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 14m 57s.xml">
       <configuration name="C:\Users\User\IdeaProjects\swarm-ai-mobbing\test in swarm-ai-mobbing" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 03m 59s.xml">
+    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 20m 21s.xml">
       <configuration name="C:\Users\User\IdeaProjects\swarm-ai-mobbing\test in swarm-ai-mobbing" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 08m 34s.xml">
+    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 20m 22s.xml">
       <configuration name="C:\Users\User\IdeaProjects\swarm-ai-mobbing\test in swarm-ai-mobbing" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 08m 49s.xml">
+    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 20m 31s.xml">
       <configuration name="C:\Users\User\IdeaProjects\swarm-ai-mobbing\test in swarm-ai-mobbing" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 10m 16s.xml">
+    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 21h 27m 01s.xml">
       <configuration name="C:\Users\User\IdeaProjects\swarm-ai-mobbing\test in swarm-ai-mobbing" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 10m 36s.xml">
+    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 21h 27m 02s.xml">
       <configuration name="C:\Users\User\IdeaProjects\swarm-ai-mobbing\test in swarm-ai-mobbing" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 19h 11m 13s.xml">
+    <history-entry file="C__Users_User_IdeaProjects_swarm-ai-mobbing_test_in_swarm-ai-mobbing - 2017.12.21 at 21h 27m 10s.xml">
       <configuration name="C:\Users\User\IdeaProjects\swarm-ai-mobbing\test in swarm-ai-mobbing" configurationId="AndroidJUnit" />
     </history-entry>
   </component>
@@ -477,19 +473,19 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32941177" sideWeight="0.52420574" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32941177" sideWeight="0.47579426" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5332829" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.4667171" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2806354" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27987897" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.48487142" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.47579426" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -503,24 +499,25 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32941177" sideWeight="0.5332829" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.47579426" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.49092284" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32941177" sideWeight="0.4667171" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2806354" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -546,30 +543,40 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/agent/module/pathfinding/PathfinderTest.groovy</url>
-          <line>25</line>
+          <line>30</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/agent/module/pathfinding/PathfinderTest.groovy</url>
-          <line>30</line>
+          <url>file://$PROJECT_DIR$/src/agent/module/pathfinding/Pathfinder.java</url>
+          <line>33</line>
           <properties />
-          <option name="timeStamp" value="13" />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/agent/module/pathfinding/Pathfinder.java</url>
+          <line>27</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/agent/module/pathfinding/Pathfinder.java</url>
+          <line>29</line>
+          <properties />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/agent/module/pathfinding/Pathfinder.java</url>
+          <line>25</line>
+          <properties />
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="14" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/config/SimulationDefaults.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config/Defines.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -910,39 +917,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/Defines.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/SimulationDefaults.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/environment/Environment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
+        <state relative-caret-position="292">
           <caret line="108" column="9" lean-forward="false" selection-start-line="108" selection-start-column="9" selection-end-line="108" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/agent/Agent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding>
-            <element signature="e#189#190#0" expanded="true" />
-            <element signature="e#217#218#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -964,22 +944,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/agent/Apid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/environment/EnvironmentTest.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
           <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding>
             <element signature="e#21#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/agent/module/pathfinding/PathfinderTest.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/Defines.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/agent/module/pathfinding/Pathfinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -996,21 +992,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/agent/module/pathfinding/PathfinderTest.groovy">
+    <entry file="file://$PROJECT_DIR$/src/agent/Apid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11">
-          <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+        <state relative-caret-position="326">
+          <caret line="21" column="33" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="21" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/agent/Agent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding>
+            <element signature="e#245#246#0" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#319#320#0" expanded="true" />
+            <element signature="e#347#348#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/agent/Vespid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/agent/module/pathfinding/Pathfinder.java">
+    <entry file="file://$PROJECT_DIR$/src/config/SimulationDefaults.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" column="44" lean-forward="true" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
