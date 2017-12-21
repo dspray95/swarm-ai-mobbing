@@ -43,8 +43,9 @@ public class Pathfinder {
      * @param b
      * @return Euclidean distance value
      */
-    public double EuclideanDistance(Coordinate a, Coordinate b){
-        return(Math.sqrt(Math.pow(a.X()-b.X(), 2)) + Math.pow(a.Y()-b.Y(), 2));
+    public double EuclideanDistance(Coordinate a, Coordinate b) {
+        double x = Math.pow(a.X() - b.X(), 2);
+        double y = Math.pow(a.X() - b.Y(), 2);
+        return Math.sqrt(x + y);
     }
-
 }

@@ -24,6 +24,12 @@ public class MovementModule {
     /**
      * Handles agent movement, either along a path or in straight line towards a specified target.
      * Uses A* pathfinding
+     */
+    public MovementModule(){
+
+    }
+
+    /**
      * @param parent Parent agent
      * @param initialPosition Start position of parent Agent
      */
