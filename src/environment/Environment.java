@@ -82,7 +82,7 @@ public class Environment {
             try {
                  location = generateFuzzyCoordinate(environmentCenter, deploymentArea);
                  if(null != environmentMap[location.X()][location.Y()]){
-                     boolean spaceHasObject = environmentMap[location.X()][location.Y()].getHasObject();
+                     boolean spaceHasObject = environmentMap[location.X()][location.Y()].getHasApid();
                      while (spaceHasObject) {
                         location = CoordinateNudge(location);
                         //Check if the new location is occupied
@@ -97,10 +97,10 @@ public class Environment {
                 //TODO error recovery
             }
             finally {
-                Apid apid = new Apid(location);
+                Apid apid = new Apid(location, this);
                 apidSwarm.addAgent(apid, i); //Add Apid at index i
                 Space space = new Space();
-                space.setHasObject(true);
+                space.setHasApid(true);
                 environmentMap[location.X()][location.Y()] = space;
             }
         }
@@ -164,6 +164,7 @@ public class Environment {
         return new Coordinate(r.nextInt(boundX) + lowerBoundX, r.nextInt(boundY) + lowerBoundY);
     }
 
+    public Space[][] getEnvironmentMap(){return this.environmentMap;}
     public Swarm getApidSwarm(){return this.apidSwarm;}
 
 }

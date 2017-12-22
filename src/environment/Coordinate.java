@@ -67,6 +67,10 @@ public class Coordinate {
 
     /**
      * Calculates the euclidean distance between this coordinate and a target coordinate
+     * Euclidean distance between two points a and b is defined as:
+     *   √(Xa - Xb)^2 + (Ya - Yb)^2
+     *
+     * @param target Coordinate object to measure distance to
      * @return double value of distance between this coordinate and target coordinate
      */
     public double EuclideanDistance(Coordinate target){

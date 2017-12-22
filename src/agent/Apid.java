@@ -2,6 +2,7 @@ package agent;
 
 import config.SimulationDefaults;
 import environment.Coordinate;
+import environment.Environment;
 
 public class Apid extends Agent{
 
@@ -13,8 +14,8 @@ public class Apid extends Agent{
     private Coordinate location;
     //modules
 
-    public Apid(Coordinate location){
-        super(location);
+    public Apid(Coordinate location, Environment environment){
+        super(location, environment);
         this.role = Apid.ROLE_WORKER;
         this.hitpoints = SimulationDefaults.APID_HP;
         this.speed = SimulationDefaults.APID_SPEED;
