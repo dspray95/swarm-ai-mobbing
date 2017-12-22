@@ -1,5 +1,6 @@
 package agent.module.pathfinding
 
+import agent.module.Pathfinder
 import environment.Coordinate
 
 class PathfinderTest extends GroovyTestCase {

@@ -1,4 +1,4 @@
-package agent.module.pathfinding;
+package agent.module;
 
 import environment.Coordinate;
 

@@ -12,7 +12,6 @@ public class Apid extends Agent{
 
     private int role;
     private Coordinate location;
-    //modules
 
     public Apid(Coordinate location, Environment environment){
         super(location, environment);

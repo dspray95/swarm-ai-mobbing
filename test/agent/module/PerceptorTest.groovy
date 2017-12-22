@@ -4,15 +4,15 @@ import agent.Agent
 import agent.Apid
 import environment.Coordinate
 
-class PerceptionModuleTest extends GroovyTestCase {
+class PerceptorTest extends GroovyTestCase {
 
-    PerceptionModule perceptor;
+    Perceptor perceptor;
 
     void setUp() {
         super.setUp()
         Coordinate location = new Coordinate(500,500);
         Agent parent = new Apid(location);
-        perceptor = new PerceptionModule(parent);
+        perceptor = new Perceptor(parent);
     }
 
     void tearDown() {
@@ -20,6 +20,6 @@ class PerceptionModuleTest extends GroovyTestCase {
     }
 
     void testPerceptionTick() {
-        assertTrue(null != perceptor.perceptionTick());
+
     }
 }

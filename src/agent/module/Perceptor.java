@@ -9,24 +9,25 @@ import environment.Space;
 
 import java.util.ArrayList;
 
-public class PerceptionModule {
+public class Perceptor {
 
     int perceptionRadius;
 
     Agent parent;
     ArrayList<Apid> perceivedApidae;
-    ArrayList<Vespid> percievedVespidae;
+    ArrayList<Vespid> perceivedVespidae;
     ArrayList<Integer> perceivedPheremones;
 
-    public PerceptionModule(Agent parent){
+    public Perceptor(Agent parent){
         this.parent = parent;
         this.perceptionRadius = SimulationDefaults.PERCEPTION_RADIUS;
     }
 
-    public void perceptionTick(){
-        ArrayList<Apid> perceivedApidae = new ArrayList<>();
-        ArrayList<Vespid> perceivedVespidae = new ArrayList<>();
-        ArrayList<Integer> percievedPheremones = new ArrayList<>();
+    public void PerceptionTick(){
+        //Empty the perceived lists
+        this.perceivedApidae = new ArrayList<>();
+        this.perceivedVespidae = new ArrayList<>();
+        this.perceivedPheremones = new ArrayList<>();
         Coordinate currentLocation = parent.getLocation();
         //Get square bounds
         Coordinate[] squareBounds = new Coordinate[perceptionRadius*2];
@@ -45,17 +46,15 @@ public class PerceptionModule {
             if(coordinate.EuclideanDistance(currentLocation) <= perceptionRadius && null != environmentMap[x][y]){
                 //Now that we've narrowed down to radius, we can check for objects to perceive
                 if(0 != environmentMap[x][y].getPheremoneStrength()){
-                    percievedPheremones.add(environmentMap[x][y].getPheremoneStrength());
+                    perceivedPheremones.add(environmentMap[x][y].getPheremoneStrength());
                 }
                 if(null != environmentMap[x][y].getApid()){
                     perceivedApidae.add(environmentMap[x][y].getApid());
                 }
                 else if(null != environmentMap[x][y].getVespid()){
                     perceivedVespidae.add(environmentMap[x][y].getVespid());
-
                 }
             }
         }
     }
-
 }

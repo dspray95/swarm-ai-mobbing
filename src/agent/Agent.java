@@ -1,6 +1,7 @@
 package agent;
 
-import agent.module.pathfinding.Pathfinder;
+import agent.module.Perceptor;
+import agent.module.Pathfinder;
 import environment.Coordinate;
 import environment.Environment;
 
@@ -14,12 +15,14 @@ public abstract class Agent {
     Coordinate location;
     Environment environment;
     //Modules
-    private Pathfinder pathfinder;
+    Pathfinder pathfinder;
+    Perceptor perceptor;
 
     public Agent(Coordinate location, Environment environment){
         this.location = location;
-        this.pathfinder = new Pathfinder();
         this.environment = environment;
+        this.pathfinder = new Pathfinder();
+        this.perceptor = new Perceptor(this);
     }
 
     public Environment getEnvironment(){return this.environment;}
