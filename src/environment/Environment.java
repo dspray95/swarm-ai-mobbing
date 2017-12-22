@@ -13,6 +13,8 @@ public class Environment {
     private Swarm apidSwarm;
 
     public Environment(int... argSwarmSize) throws IllegalArgumentException{
+        this.environmentSize = SimulationDefaults.ENVIRONMENT_SIZE;
+        this.environmentMap = CreateEnvironmentMap();
         //optional configuration for swarm size
         if(argSwarmSize.length > 0){
             try{
@@ -25,10 +27,15 @@ public class Environment {
         else{
             this.apidSwarm = new Swarm();
         }
-        this.environmentSize = SimulationDefaults.ENVIRONMENT_SIZE;
-        this.environmentMap = new Space[this.environmentSize][this.environmentSize];
     }
 
+    public Space[][] CreateEnvironmentMap(){
+        Space[][] environmentMap = new Space[this.environmentSize][];
+        for(int i = 0; i < environmentMap.length; i++){
+            environmentMap[i] = new Space[this.environmentSize];
+        }
+        return environmentMap;
+    }
     /**
      * Creates agents on environment and maps them to an initial position
      * @param  argsPopulation deployment area size, swarm size
@@ -65,20 +72,59 @@ public class Environment {
         );
         //Create apidae and add them to swarm
         for(int i = 0; i < apidSwarm.getSwarmSize(); i++){
-            Coordinate location;
+            Coordinate location = new Coordinate();
             try {
                  location = generateFuzzyCoordinate(environmentCenter, deploymentArea);
+                 if(null != environmentMap[location.X()][location.Y()]){
+                     boolean spaceHasObject = environmentMap[location.X()][location.Y()].getHasObject();
+                     while (spaceHasObject) {
+                        location = CoordinateNudge(location);
+                        //Check if the new location is occupied
+                        if (null == environmentMap[location.X()][location.Y()]){
+                            spaceHasObject = false;
+                        }
+                    }
+                 }
             }catch(IllegalArgumentException e){
                 System.out.print(e);
                 return;
                 //TODO error recovery
             }
-            Apid apid = new Apid(location);
-            apidSwarm.addAgent(apid, i); //Add Apid at index i
+            finally {
+                Apid apid = new Apid(location);
+                apidSwarm.addAgent(apid, i); //Add Apid at index i
+                Space space = new Space();
+                space.setHasObject(true);
+                environmentMap[location.X()][location.Y()] = space;
+            }
         }
-
         long endTime = System.nanoTime();
-        System.out.println("Populated in: " + (endTime - startTime) + "ns"); //TODO Log
+        System.out.println("Populated in: " + ((endTime - startTime)/1000) + "ms"); //TODO Log file
+    }
+
+    /**
+     * Moves the provided coordinate by a vector of 1 in a random cardinal direction
+     * @param coordinate coordinate to nudge
+     * @return new coordinate
+     */
+    public Coordinate CoordinateNudge(Coordinate coordinate){
+        Random r = new Random();
+        int direction = r.nextInt(3);
+        switch(direction){
+            case 0:
+                coordinate.setX(coordinate.X()+1);
+                break;
+            case 1:
+                coordinate.setX(coordinate.X()-1);
+                break;
+            case 2:
+                coordinate.setY(coordinate.Y()+1);
+                break;
+            case 3:
+                coordinate.setY(coordinate.Y()-1);
+                break;
+        }
+        return coordinate;
     }
 
     /**
@@ -115,3 +161,4 @@ public class Environment {
     public Swarm getApidSwarm(){return this.apidSwarm;}
 
 }
+
