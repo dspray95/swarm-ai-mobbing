@@ -64,4 +64,14 @@ public class Coordinate {
         this.x = x;
         this.y = y;
     }
+
+    /**
+     * Calculates the euclidean distance between this coordinate and a target coordinate
+     * @return double value of distance between this coordinate and target coordinate
+     */
+    public double EuclideanDistance(Coordinate target){
+        double x = Math.pow(X() - target.X(), 2);
+        double y = Math.pow(Y() - target.Y(), 2);
+        return Math.sqrt(x + y);
+    }
 }

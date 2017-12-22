@@ -14,6 +14,7 @@ public class Apid extends Agent{
     //modules
 
     public Apid(Coordinate location){
+        super(location);
         this.role = Apid.ROLE_WORKER;
         this.hitpoints = SimulationDefaults.APID_HP;
         this.speed = SimulationDefaults.APID_SPEED;
@@ -22,8 +23,3 @@ public class Apid extends Agent{
         this.location = location;
     }
 }
-//
-//    private int hitpoints;
-//    private int speed;
-//    private double heatResistance;
-//    private double aggression;

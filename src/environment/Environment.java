@@ -29,6 +29,10 @@ public class Environment {
         }
     }
 
+    /**
+     * Generates a sparse 2d matrix on which agents operate
+     * @return 2d sparse matrix
+     */
     public Space[][] CreateEnvironmentMap(){
         Space[][] environmentMap = new Space[this.environmentSize][];
         for(int i = 0; i < environmentMap.length; i++){
@@ -36,13 +40,15 @@ public class Environment {
         }
         return environmentMap;
     }
+
     /**
-     * Creates agents on environment and maps them to an initial position
+     * Creates agents on the simulation environment and maps them to an initial position
      * @param  argsPopulation deployment area size, swarm size
      */
     public void Populate(int... argsPopulation) throws IllegalArgumentException{
         long startTime = System.nanoTime();
-        //optional configuration for deployment area
+        //TODO: Varargs validation function, reduce boilerplate
+        //varargs validation for deployment area
         int deploymentArea;
         if(argsPopulation.length > 0){
             if(argsPopulation[0] > 0){
@@ -54,7 +60,7 @@ public class Environment {
         else{
             deploymentArea = SimulationDefaults.SWARM_DEPLOYMENT_AREA;
         }
-        //Optional configs for swarm size
+        //varargs validation for swarm size
         if(argsPopulation.length > 1){
             if(argsPopulation[1] > 0){
                 this.apidSwarm = new Swarm(argsPopulation[1]);
@@ -65,7 +71,7 @@ public class Environment {
         else{
             this.apidSwarm = new Swarm(SimulationDefaults.SWARM_SIZE);
         }
-        //Get the center of the environment
+        //Get the center of  the environment
         Coordinate environmentCenter = new Coordinate(
                 environmentSize/2,
                 environmentSize/2

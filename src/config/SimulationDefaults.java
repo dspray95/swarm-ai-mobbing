@@ -7,6 +7,8 @@ public class SimulationDefaults {
     //Swarm
     public static int SWARM_SIZE = 500;
     public static int SWARM_DEPLOYMENT_AREA = 2500;
+    //Agent
+    public static int PERCEPTION_RADIUS = 100;
     //Apid
     public static int APID_HP = 100;
     public static int APID_SPEED = 1;
