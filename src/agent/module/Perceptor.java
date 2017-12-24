@@ -11,12 +11,12 @@ import java.util.ArrayList;
 
 public class Perceptor {
 
-    int perceptionRadius;
+    private int perceptionRadius;
 
-    Agent parent;
-    ArrayList<Apid> perceivedApidae;
-    ArrayList<Vespid> perceivedVespidae;
-    ArrayList<Integer> perceivedPheremones;
+    private Agent parent;
+    private ArrayList<Apid> perceivedApidae;
+    private ArrayList<Vespid> perceivedVespidae;
+    private ArrayList<Integer> perceivedPheremones;
 
     public Perceptor(Agent parent){
         this.parent = parent;
@@ -30,15 +30,20 @@ public class Perceptor {
         this.perceivedPheremones = new ArrayList<>();
         Coordinate currentLocation = parent.getLocation();
         //Get square bounds
-        Coordinate[] squareBounds = new Coordinate[perceptionRadius*2];
-        for(int i = 1; i < perceptionRadius*2; i++){
-            for(int j = 1; j < perceptionRadius*2; j++) {
-                squareBounds[i] = new Coordinate(i, j);
+        ArrayList<Coordinate> squareBounds = new ArrayList<>();
+        //Setup bounds
+        int iBoundLower = parent.getLocation().X() - perceptionRadius;
+        int jBoundLower = parent.getLocation().Y() - perceptionRadius;
+        int iBoundLimit = iBoundLower + perceptionRadius*2;
+        int jBoundLimit = jBoundLower + perceptionRadius*2;
+        for(int i = iBoundLower; i < iBoundLimit; i++){
+            for(int j = jBoundLower; j < jBoundLimit; j++) {
+                squareBounds.add(new Coordinate(i, j));
             }
         }
         //Get a reference to the environment map
         Space[][] environmentMap = parent.getEnvironment().getEnvironmentMap();
-        //Now we can check through every coordinate in the bounds, also validating if they're within the euclidean radius
+        //Now check through every coordinate in the bounds, also validating if they're within the euclidean radius
         for(Coordinate coordinate : squareBounds){
             int x = coordinate.X();
             int y = coordinate.Y();
@@ -48,13 +53,17 @@ public class Perceptor {
                 if(0 != environmentMap[x][y].getPheremoneStrength()){
                     perceivedPheremones.add(environmentMap[x][y].getPheremoneStrength());
                 }
-                if(null != environmentMap[x][y].getApid()){
+                if(null != environmentMap[x][y].getApid() && environmentMap[x][y].getApid() != parent){ //exclude parent from perceieve list
                     perceivedApidae.add(environmentMap[x][y].getApid());
                 }
-                else if(null != environmentMap[x][y].getVespid()){
+                else if(null != environmentMap[x][y].getVespid() && environmentMap[x][y].getVespid() != parent){
                     perceivedVespidae.add(environmentMap[x][y].getVespid());
                 }
             }
         }
+    }
+
+    public ArrayList<Apid> getApidae(){
+        return this.perceivedApidae;
     }
 }

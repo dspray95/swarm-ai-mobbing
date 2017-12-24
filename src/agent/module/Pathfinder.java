@@ -23,7 +23,7 @@ public class Pathfinder {
         Double bestDistance = 0d;
         boolean testingInitialised = false;
         for(Coordinate coordinate : neighbours){
-            double eucDistance = EuclideanDistance(coordinate, target);
+            double eucDistance = coordinate.EuclideanDistance(target);
             if(testingInitialised){
                 if(eucDistance < bestDistance){
                     bestDistance = eucDistance;

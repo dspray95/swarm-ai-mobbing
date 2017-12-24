@@ -12,7 +12,7 @@ public class SimulationDefaults {
     //Apid
     public static int APID_HP = 100;
     public static int APID_SPEED = 1;
-    public static double APID_HEAT_THRESHHOLD = 49; //Celsius
+    public static double APID_HEAT_THRESHOLD = 49; //Celsius
     public static double APID_AGGRESSION = 1d;
     //Vespid
     public static int VESPID_HP = 500;

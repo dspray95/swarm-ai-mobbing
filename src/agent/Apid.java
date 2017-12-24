@@ -18,7 +18,7 @@ public class Apid extends Agent{
         this.role = Apid.ROLE_WORKER;
         this.hitpoints = SimulationDefaults.APID_HP;
         this.speed = SimulationDefaults.APID_SPEED;
-        this.heatResistance = SimulationDefaults.APID_HEAT_THRESHHOLD;
+        this.heatResistance = SimulationDefaults.APID_HEAT_THRESHOLD;
         this.aggression = SimulationDefaults. APID_AGGRESSION;
         this.location = location;
     }

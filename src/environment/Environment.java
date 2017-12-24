@@ -82,7 +82,7 @@ public class Environment {
             try {
                  location = generateFuzzyCoordinate(environmentCenter, deploymentArea);
                  if(null != environmentMap[location.X()][location.Y()]){
-                     boolean spaceHasObject = environmentMap[location.X()][location.Y()].getHasApid();
+                     boolean spaceHasObject = environmentMap[location.X()][location.Y()].getApid() != null ? true : false;
                      while (spaceHasObject) {
                         location = CoordinateNudge(location);
                         //Check if the new location is occupied
@@ -97,17 +97,19 @@ public class Environment {
                 //TODO error recovery
             }
             finally {
-                Apid apid = new Apid(location, this);
-                apidSwarm.addAgent(apid, i); //Add Apid at index i
-                Space space = new Space();
-                space.setHasApid(true);
-                environmentMap[location.X()][location.Y()] = space;
+                addApid(new Apid(location, this), i, location);
             }
         }
         long endTime = System.nanoTime();
-        System.out.println("Populated in: " + ((endTime - startTime)/1000) + "ms"); //TODO Log file
+        System.out.println("Populated in: " + ((endTime - startTime)/10000) + "ms"); //TODO Log file
     }
 
+    public void addApid(Apid apid, int index, Coordinate location){
+        Space space = new Space();
+        space.setApid(apid);
+        environmentMap[location.X()][location.Y()] = space;
+        apidSwarm.addAgent(apid, index);
+    }
     /**
      * Moves the provided coordinate by a vector of 1 in a random cardinal direction
      * @param coordinate coordinate to nudge
