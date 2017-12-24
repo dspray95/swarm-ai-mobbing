@@ -28,7 +28,7 @@ class PathfinderTest extends GroovyTestCase {
      * Y = -1 X = 0 returning distance of 12, when Y = 0 X = 0 returns 14
      */
     void testNextStep() {
-        Coordinate step = pathfinder.nextStep(start, destination);
+        Coordinate step = pathfinder.NextStep(start, destination);
         assertTrue(step.X() == 1 && step.Y() == 1);
     }
 

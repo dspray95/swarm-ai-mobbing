@@ -17,8 +17,8 @@ public class Pathfinder {
      * @param target destination coordinate
      * @return next coordinate
      */
-    public Coordinate nextStep(Coordinate start, Coordinate target){
-        ArrayList<Coordinate> neighbours = start.getNeighbours();
+    public Coordinate NextStep(Coordinate start, Coordinate target){
+        ArrayList<Coordinate> neighbours = start.GetNeighbours();
         Coordinate bestCoordinate = new Coordinate();
         Double bestDistance = 0d;
         boolean testingInitialised = false;

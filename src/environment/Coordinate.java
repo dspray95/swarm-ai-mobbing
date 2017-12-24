@@ -28,10 +28,10 @@ public class Coordinate {
      * Creates a list of all adjacent nodes to this coordinate in 8 directions
      * @return adjacent nodes
      */
-    public ArrayList<Coordinate> getNeighbours(){
+    public ArrayList<Coordinate> GetNeighbours(){
         ArrayList<Coordinate> neighbours = new ArrayList<Coordinate>();
         for(Coordinate vector : Coordinate.VECTOR_NEIGHBOURS){
-            neighbours.add(vectorMove(vector));
+            neighbours.add(VectorMove(vector));
         }
         return neighbours;
     }
@@ -41,7 +41,7 @@ public class Coordinate {
      * @param vector Coordinate by which to move
      * @return new coordinate modified by vector
      */
-    private Coordinate vectorMove(Coordinate vector){
+    private Coordinate VectorMove(Coordinate vector){
         return new Coordinate(x + vector.X(), y + vector.Y());
     }
 
@@ -50,12 +50,6 @@ public class Coordinate {
     }
     public int X(){
         return this.x;
-    }
-    public HashMap<String, Integer> getCoordinates(){
-        HashMap<String, Integer> hashMap = new HashMap<>();
-        hashMap.put("X", this.x);
-        hashMap.put("Y", this.y);
-        return hashMap;
     }
 
     public void setX(int x) { this.x = x; }
