@@ -17,13 +17,13 @@ public class Pathfinder {
      * @param target destination coordinate
      * @return next coordinate
      */
-    public Coordinate NextStep(Coordinate start, Coordinate target){
-        ArrayList<Coordinate> neighbours = start.GetNeighbours();
+    public Coordinate nextStep(Coordinate start, Coordinate target){
+        ArrayList<Coordinate> neighbours = start.getNeighbours();
         Coordinate bestCoordinate = new Coordinate();
         Double bestDistance = 0d;
         boolean testingInitialised = false;
         for(Coordinate coordinate : neighbours){
-            double eucDistance = coordinate.EuclideanDistance(target);
+            double eucDistance = coordinate.euclideanDistance(target);
             if(testingInitialised){
                 if(eucDistance < bestDistance){
                     bestDistance = eucDistance;
@@ -36,18 +36,5 @@ public class Pathfinder {
             }
         }
         return bestCoordinate;
-    }
-
-    /**
-     * Euclidean distance between two points a and b is defined as:
-     *   √(Xa - Xb)^2 + (Ya - Yb)^2
-     * @param a
-     * @param b
-     * @return Euclidean distance value
-     */
-    public double EuclideanDistance(Coordinate a, Coordinate b) {
-        double x = Math.pow(a.X() - b.X(), 2);
-        double y = Math.pow(a.Y() - b.Y(), 2);
-        return Math.sqrt(x + y);
     }
 }

@@ -36,7 +36,7 @@ class PerceptorTest extends GroovyTestCase {
     }
 
     void testOneApidPercieve() {
-        perceptor.PerceptionTick();
+        perceptor.perceptionTick();
         assertTrue(perceptor.getApidae().size() == 1);
     }
 }

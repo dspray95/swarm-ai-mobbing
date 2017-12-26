@@ -25,6 +25,8 @@ public abstract class Agent {
         this.perceptor = new Perceptor(this);
     }
 
+    public abstract int judgeStateChange();
+
     public Environment getEnvironment(){return this.environment;}
     public Coordinate getLocation(){ return location;}
     public int getSpeed() { return speed; }

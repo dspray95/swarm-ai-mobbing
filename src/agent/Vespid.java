@@ -12,4 +12,9 @@ public class Vespid extends Agent{
         this.heatResistance = SimulationDefaults.VESPID_HEAT_THRESHHOLD;
         this.aggression = SimulationDefaults.VESPID_AGGRESSION;
     }
+
+    @Override
+    public int judgeStateChange(){
+        return 0;
+    }
 }

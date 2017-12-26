@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Coordinate {
 
-    public static final Collection<Coordinate> VECTOR_NEIGHBOURS = Arrays.asList(
+    public static final List<Coordinate> VECTOR_NEIGHBOURS = Arrays.asList(
             new Coordinate(  0, -1 ),   // top
             new Coordinate( +1, -1 ),   // right-top
             new Coordinate( +1,  0 ),   // right-middle
@@ -28,10 +28,10 @@ public class Coordinate {
      * Creates a list of all adjacent nodes to this coordinate in 8 directions
      * @return adjacent nodes
      */
-    public ArrayList<Coordinate> GetNeighbours(){
+    public ArrayList<Coordinate> getNeighbours(){
         ArrayList<Coordinate> neighbours = new ArrayList<Coordinate>();
         for(Coordinate vector : Coordinate.VECTOR_NEIGHBOURS){
-            neighbours.add(VectorMove(vector));
+            neighbours.add(vectorMove(vector));
         }
         return neighbours;
     }
@@ -41,7 +41,7 @@ public class Coordinate {
      * @param vector Coordinate by which to move
      * @return new coordinate modified by vector
      */
-    private Coordinate VectorMove(Coordinate vector){
+    private Coordinate vectorMove(Coordinate vector){
         return new Coordinate(x + vector.X(), y + vector.Y());
     }
 
@@ -67,7 +67,7 @@ public class Coordinate {
      * @param target Coordinate object to measure distance to
      * @return double value of distance between this coordinate and target coordinate
      */
-    public double EuclideanDistance(Coordinate target){
+    public double euclideanDistance(Coordinate target){
         double x = Math.pow(X() - target.X(), 2);
         double y = Math.pow(Y() - target.Y(), 2);
         return Math.sqrt(x + y);

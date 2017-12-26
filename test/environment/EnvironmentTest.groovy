@@ -18,7 +18,7 @@ class EnvironmentTest extends GroovyTestCase {
     }
 
     void testPopulateCreation() {
-        environment.Populate();
+        environment.populate();
         Swarm swarm = environment.getApidSwarm();
         Agent agent = swarm.agents[SimulationDefaults.SWARM_SIZE - 1];
         assertNotNull(agent);  //Assert that the last entry in the swarm Agent[] array exists
@@ -27,7 +27,7 @@ class EnvironmentTest extends GroovyTestCase {
     //Passes if the function recognises the deployment area argument as invalid
     void testPopulateInvalidArgs(){
         try{
-            environment.Populate(-50);
+            environment.populate(-50);
         }catch(IllegalArgumentException e){
             assertTrue(true);
         }
@@ -35,7 +35,7 @@ class EnvironmentTest extends GroovyTestCase {
 
     void testPopulateValidArgs(){
         try{
-            environment.Populate(500);
+            environment.populate(500);
         }catch(IllegalArgumentException e){
             assertTrue(true);
         }

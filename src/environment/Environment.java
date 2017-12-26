@@ -14,7 +14,7 @@ public class Environment {
 
     public Environment(int... argSwarmSize) throws IllegalArgumentException{
         this.environmentSize = SimulationDefaults.ENVIRONMENT_SIZE;
-        this.environmentMap = CreateEnvironmentMap();
+        this.environmentMap = createEnvironmentMap();
         //optional configuration for swarm size
         if(argSwarmSize.length > 0){
             try{
@@ -33,7 +33,7 @@ public class Environment {
      * Generates a sparse 2d matrix on which agents operate
      * @return 2d sparse matrix
      */
-    public Space[][] CreateEnvironmentMap(){
+    public Space[][] createEnvironmentMap(){
         Space[][] environmentMap = new Space[this.environmentSize][];
         for(int i = 0; i < environmentMap.length; i++){
             environmentMap[i] = new Space[this.environmentSize];
@@ -45,7 +45,7 @@ public class Environment {
      * Creates agents on the simulation environment and maps them to an initial position
      * @param  argsPopulation deployment area size, swarm size
      */
-    public void Populate(int... argsPopulation) throws IllegalArgumentException{
+    public void populate(int... argsPopulation) throws IllegalArgumentException{
         long startTime = System.nanoTime();
         //TODO: Varargs validation function, reduce boilerplate
         //varargs validation for deployment area
@@ -82,9 +82,9 @@ public class Environment {
             try {
                  location = generateFuzzyCoordinate(environmentCenter, deploymentArea);
                  if(null != environmentMap[location.X()][location.Y()]){
-                     boolean spaceHasObject = environmentMap[location.X()][location.Y()].getApid() != null ? true : false;
+                     boolean spaceHasObject = environmentMap[location.X()][location.Y()].getApid() != null;
                      while (spaceHasObject) {
-                        location = CoordinateNudge(location);
+                        location = coordinateNudge(location);
                         //Check if the new location is occupied
                         if (null == environmentMap[location.X()][location.Y()]){
                             spaceHasObject = false;
@@ -104,7 +104,14 @@ public class Environment {
         System.out.println("Populated in: " + ((endTime - startTime)/10000) + "ms"); //TODO Log file
     }
 
+    /**
+     * Add a pre-created apid to the environment space
+     * @param apid Apid agent to add
+     * @param index index at which to add the apid to the swarm array
+     * @param location location at which the apid should appear
+     */
     public void addApid(Apid apid, int index, Coordinate location){
+        //TODO validation
         Space space = new Space();
         space.setApid(apid);
         environmentMap[location.X()][location.Y()] = space;
@@ -115,7 +122,7 @@ public class Environment {
      * @param coordinate coordinate to nudge
      * @return new coordinate
      */
-    public Coordinate CoordinateNudge(Coordinate coordinate){
+    public Coordinate coordinateNudge(Coordinate coordinate){
         Random r = new Random();
         int direction = r.nextInt(3);
         switch(direction){

@@ -23,7 +23,7 @@ public class Perceptor {
         this.perceptionRadius = SimulationDefaults.PERCEPTION_RADIUS;
     }
 
-    public void PerceptionTick(){
+    public void perceptionTick(){
         //Empty the perceived lists
         this.perceivedApidae = new ArrayList<>();
         this.perceivedVespidae = new ArrayList<>();
@@ -48,7 +48,7 @@ public class Perceptor {
             int x = coordinate.X();
             int y = coordinate.Y();
             //Only perceive if the coordinate is within the bounds
-            if(coordinate.EuclideanDistance(currentLocation) <= perceptionRadius && null != environmentMap[x][y]){
+            if(coordinate.euclideanDistance(currentLocation) <= perceptionRadius && null != environmentMap[x][y]){
                 //Now that we've narrowed down to radius, we can check for objects to perceive
                 if(0 != environmentMap[x][y].getPheremoneStrength()){
                     perceivedPheremones.add(environmentMap[x][y].getPheremoneStrength());

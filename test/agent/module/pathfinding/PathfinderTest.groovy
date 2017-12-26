@@ -28,12 +28,12 @@ class PathfinderTest extends GroovyTestCase {
      * Y = -1 X = 0 returning distance of 12, when Y = 0 X = 0 returns 14
      */
     void testNextStep() {
-        Coordinate step = pathfinder.NextStep(start, destination);
+        Coordinate step = pathfinder.nextStep(start, destination);
         assertTrue(step.X() == 1 && step.Y() == 1);
     }
 
     void testEuclideanDistance() {
-        double distance = pathfinder.EuclideanDistance(start, destination);
+        double distance = pathfinder.euclideanDistance(start, destination);
         assertTrue(distance >= 14.14 && distance <= 14.15) //Test only to significant figures
     }
 }
