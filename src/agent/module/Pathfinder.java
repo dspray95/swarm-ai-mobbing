@@ -16,6 +16,8 @@ public class Pathfinder {
      * @param start current location coordinate
      * @param target destination coordinate
      * @return next coordinate
+     *
+     * TODO: Space occupied testing
      */
     public Coordinate nextStep(Coordinate start, Coordinate target){
         ArrayList<Coordinate> neighbours = start.getNeighbours();

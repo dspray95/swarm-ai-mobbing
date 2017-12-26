@@ -20,12 +20,12 @@ public class Perceptor {
     private ArrayList<Vespid> perceivedVespidae;
     private ArrayList<Integer> perceivedPheremones;
 
-    public Perceptor(Agent parent, ThreatEvent threatObserver){
-        if(threatObserver != null){
-            this.threatObserver = threatObserver;
-        }
+    public Perceptor(Agent parent, ThreatEvent... threatObserver){
         this.parent = parent;
         this.perceptionRadius = SimulationDefaults.PERCEPTION_RADIUS;
+        if(threatObserver != null){
+            this.threatObserver = threatObserver[0];
+        }
     }
 
     public void perceptionTick(){
@@ -55,8 +55,8 @@ public class Perceptor {
             //Only perceive if the coordinate is within the bounds
             if(coordinate.euclideanDistance(currentLocation) <= perceptionRadius && null != environmentMap[x][y]){
                 //Now that we've narrowed down to radius, we can check for objects to perceive
-                if(0 != environmentMap[x][y].getPheremoneStrength()){
-                    perceivedPheremones.add(environmentMap[x][y].getPheremoneStrength());
+                if(0 != environmentMap[x][y].getPheromoneStrength()){
+                    perceivedPheremones.add(environmentMap[x][y].getPheromoneStrength());
                 }
                 if(null != environmentMap[x][y].getApid() && environmentMap[x][y].getApid() != parent){ //exclude parent from perceieve list
                     perceivedApidae.add(environmentMap[x][y].getApid());

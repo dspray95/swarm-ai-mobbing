@@ -1,6 +1,8 @@
 package agent;
 
 import agent.listener.ThreatEvent;
+import agent.module.state.Guard;
+import agent.module.state.Mob;
 import agent.module.state.State;
 import agent.module.state.Worker;
 import config.SimulationDefaults;
@@ -36,15 +38,38 @@ public class Apid extends Agent implements ThreatEvent {
     }
 
     /**
-     * Incriments the value of pheremone strength in the apid's current space
+     * Modifies the state to match the given integer value (0-2)
+     * If an incorrect value is given the state will resolve to the worker state
+     * @param targetState
      */
-    public void setPheremone(){
+    public void changeState(int targetState){
+        state = null;
+        switch(targetState){
+            case 0:
+                state = new Worker(this);
+                break;
+            case 1:
+                state = new Guard(this);
+                break;
+            case 2:
+                state = new Mob(this);
+            default:
+                state = new Worker(this);
+        }
+    }
+
+    /**
+     * Increments the value of pheromone strength in the apid's current space
+     */
+    public void setPheromone(){
         Space space = environment.getEnvironmentMap()[location.X()][location.Y()];
-        space.setPheremoneStrength(space.getPheremoneStrength() + 1);
+        space.setPheromoneStrength(space.getPheromoneStrength() + 1);
     }
 
     @Override
     public void threatAlert() {
-
+        setPheromone();
+        alertLevel += 100;
+        changeState(STATE_GUARD);
     }
 }

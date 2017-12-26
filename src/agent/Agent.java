@@ -27,6 +27,10 @@ public abstract class Agent {
 
     public abstract int judgeStateChange();
 
+    public void setLocation(Coordinate location){
+        this.location = location;
+    }
+
     public Environment getEnvironment(){return this.environment;}
     public Coordinate getLocation(){ return location;}
     public int getSpeed() { return speed; }
