@@ -3,6 +3,7 @@ package agent.module;
 import agent.Agent;
 import agent.Apid;
 import agent.Vespid;
+import agent.listener.ThreatEvent;
 import config.SimulationDefaults;
 import environment.Coordinate;
 import environment.Space;
@@ -14,11 +15,15 @@ public class Perceptor {
     private int perceptionRadius;
 
     private Agent parent;
+    private ThreatEvent threatObserver;
     private ArrayList<Apid> perceivedApidae;
     private ArrayList<Vespid> perceivedVespidae;
     private ArrayList<Integer> perceivedPheremones;
 
-    public Perceptor(Agent parent){
+    public Perceptor(Agent parent, ThreatEvent threatObserver){
+        if(threatObserver != null){
+            this.threatObserver = threatObserver;
+        }
         this.parent = parent;
         this.perceptionRadius = SimulationDefaults.PERCEPTION_RADIUS;
     }
@@ -55,6 +60,9 @@ public class Perceptor {
                 }
                 if(null != environmentMap[x][y].getApid() && environmentMap[x][y].getApid() != parent){ //exclude parent from perceieve list
                     perceivedApidae.add(environmentMap[x][y].getApid());
+                    if(threatObserver!=null) {
+                        threatObserver.threatAlert();
+                    }
                 }
                 else if(null != environmentMap[x][y].getVespid() && environmentMap[x][y].getVespid() != parent){
                     perceivedVespidae.add(environmentMap[x][y].getVespid());
