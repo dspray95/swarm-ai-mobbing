@@ -102,10 +102,18 @@ public class Environment implements Serializable, TickerEventListener {
      */
     public void addApid(Apid apid, int index, Coordinate location){
         //TODO validation
-        Space space = new Space();
-        space.setApid(apid);
-        apidSwarm.addAgent(apid, index);
-        tickerEventListeners.add(apid);
+        apidSwarm.add(apid);
+        registerTickerListener(apid);
+    }
+
+    public void addVespid(Vespid vespid){
+        vespidae.add(vespid);
+        registerTickerListener(vespid);
+    }
+
+    public void addPheromone(Pheromone pheromone){
+        this.pheromones.add(pheromone);
+        registerTickerListener(pheromone);
     }
     /**
      * Moves the provided coordinate by a vector of 1 in a random cardinal direction
@@ -161,11 +169,6 @@ public class Environment implements Serializable, TickerEventListener {
         //Return a new coordinate with random x and y variable within the bounding box
         Random r = new Random();
         return new Coordinate(r.nextInt(boundX) + lowerBoundX, r.nextInt(boundY) + lowerBoundY);
-    }
-
-    public void addPheromone(Pheromone pheromone){
-        this.pheromones.add(pheromone);
-        tickerEventListeners.add(pheromone);
     }
 
     public void registerTickerListener(TickerEventListener listener){

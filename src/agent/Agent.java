@@ -24,8 +24,6 @@ public abstract class Agent implements Serializable, TickerEventListener {
     Perceptor perceptor;
     Mover mover;
     State state;
-    //Simulation classes
-
     public Agent(Coordinate location, Environment environment){
         this.location = location;
         this.environment = environment;
@@ -47,6 +45,7 @@ public abstract class Agent implements Serializable, TickerEventListener {
     @Override
     public void tickerEvent(){
         perceptor.perceptionTick();
+        judgeStateChange();
         mover.move(pathfinder.nextStep(location, state.getNextTarget()));
     }
 
