@@ -5,20 +5,26 @@ import agent.Vespid;
 import agent.pheremone.Pheromone;
 import agent.swarm.Swarm;
 import config.SimulationDefaults;
+import simulation.Simulator;
+import simulation.TickerEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Environment implements Serializable {
+public class Environment implements Serializable, TickerEventListener {
 
     private int environmentSize;
 
+    private Simulator simulator;
     private Swarm apidSwarm;
     private ArrayList<Vespid> vespidae;
     private ArrayList<Pheromone> pheromones;
 
+    static ArrayList<TickerEventListener> tickerEventListeners;
+
     public Environment(int... argSwarmSize) throws IllegalArgumentException{
+        this.simulator = simulator;
         this.environmentSize = SimulationDefaults.ENVIRONMENT_SIZE;
         //optional configuration for swarm size
         if(argSwarmSize.length > 0){
@@ -99,6 +105,7 @@ public class Environment implements Serializable {
         Space space = new Space();
         space.setApid(apid);
         apidSwarm.addAgent(apid, index);
+        tickerEventListeners.add(apid);
     }
     /**
      * Moves the provided coordinate by a vector of 1 in a random cardinal direction
@@ -158,10 +165,33 @@ public class Environment implements Serializable {
 
     public void addPheromone(Pheromone pheromone){
         this.pheromones.add(pheromone);
+        tickerEventListeners.add(pheromone);
     }
 
+    public void registerTickerListener(TickerEventListener listener){
+        tickerEventListeners.add(listener);
+    }
+
+    public void unregisterTickerListener(TickerEventListener listener){
+        tickerEventListeners.remove(listener);
+    }
+
+    public void notifyTickerListeners(){
+        for(TickerEventListener listener : tickerEventListeners){
+            listener.tickerEvent();
+        }
+    }
+
+    public Simulator getSimulator(){return this.getSimulator();}
     public Swarm getApidSwarm(){return this.apidSwarm;}
     public ArrayList<Vespid> getVespidae(){return this.vespidae;}
     public ArrayList<Pheromone> getPheromones(){return this.pheromones;}
+
+    @Override
+    public void tickerEvent() {
+        for(TickerEventListener listener : tickerEventListeners){
+            listener.tickerEvent();
+        }
+    }
 }
 

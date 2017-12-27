@@ -1,5 +1,6 @@
 import environment.Coordinate
 import environment.Environment
+import simulation.Logger
 
 class LoggerTest extends GroovyTestCase {
 

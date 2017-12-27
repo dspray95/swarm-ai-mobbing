@@ -3,7 +3,6 @@ package agent;
 import agent.listener.ThreatEvent;
 import agent.module.state.Guard;
 import agent.module.state.Mob;
-import agent.module.state.State;
 import agent.module.state.Worker;
 import agent.pheremone.Pheromone;
 import config.SimulationDefaults;
@@ -19,7 +18,6 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
     public static final int STATE_GUARD = 1;
     public static final int STATE_MOB = 2;
 
-    private State state;
     private Coordinate location;
     private int alertLevel;
 
