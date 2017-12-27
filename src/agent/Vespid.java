@@ -4,7 +4,9 @@ import config.SimulationDefaults;
 import environment.Coordinate;
 import environment.Environment;
 
-public class Vespid extends Agent{
+import java.io.Serializable;
+
+public class Vespid extends Agent implements Serializable{
     public Vespid(Coordinate location, Environment environment){
         super(location, environment);
         this.hitpoints = SimulationDefaults.VESPID_HP;

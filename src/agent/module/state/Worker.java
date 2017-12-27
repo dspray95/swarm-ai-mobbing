@@ -3,7 +3,9 @@ package agent.module.state;
 import agent.Apid;
 import environment.Coordinate;
 
-public class Worker extends State{
+import java.io.Serializable;
+
+public class Worker extends State implements Serializable{
 
     public Worker(Apid parent){
         super(parent);

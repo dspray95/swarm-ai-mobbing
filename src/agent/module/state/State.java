@@ -3,9 +3,10 @@ package agent.module.state;
 import agent.Agent;
 import environment.Coordinate;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public abstract class State {
+public abstract class State implements Serializable{
 
     int previousVector;
     Agent parent;

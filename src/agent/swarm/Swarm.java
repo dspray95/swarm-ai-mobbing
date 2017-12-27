@@ -3,7 +3,9 @@ package agent.swarm;
 import agent.Agent;
 import config.SimulationDefaults;
 
-public class Swarm {
+import java.io.Serializable;
+
+public class Swarm implements Serializable{
 
     private Agent[] swarm;
     private int swarmSize;

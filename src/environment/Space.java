@@ -3,7 +3,9 @@ package environment;
 import agent.Apid;
 import agent.Vespid;
 
-public class Space {
+import java.io.Serializable;
+
+public class Space implements Serializable{
 
     private Apid apid;
     private Vespid vespid;

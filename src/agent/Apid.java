@@ -10,7 +10,9 @@ import environment.Coordinate;
 import environment.Environment;
 import environment.Space;
 
-public class Apid extends Agent implements ThreatEvent {
+import java.io.Serializable;
+
+public class Apid extends Agent implements ThreatEvent, Serializable {
 
     public static final int STATE_WORKER = 0;
     public static final int STATE_GUARD = 1;

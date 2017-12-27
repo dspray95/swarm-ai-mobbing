@@ -4,9 +4,10 @@ import agent.Apid;
 import agent.swarm.Swarm;
 import config.SimulationDefaults;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Environment {
+public class Environment implements Serializable {
 
     private Space[][] environmentMap;
     private int environmentSize;
@@ -101,7 +102,7 @@ public class Environment {
             }
         }
         long endTime = System.nanoTime();
-        System.out.println("Populated in: " + ((endTime - startTime)/10000) + "ms"); //TODO Log file
+        System.out.println("Populated in: " + ((endTime - startTime)/10000) + "ms"); //TODO log file
     }
 
     /**

@@ -3,7 +3,9 @@ package agent.module.state;
 import agent.Agent;
 import environment.Coordinate;
 
-public class Guard extends State {
+import java.io.Serializable;
+
+public class Guard extends State implements Serializable {
 
     public Guard(Agent parent) {
         super(parent);

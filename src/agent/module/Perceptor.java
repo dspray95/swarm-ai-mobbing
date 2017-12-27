@@ -8,9 +8,10 @@ import config.SimulationDefaults;
 import environment.Coordinate;
 import environment.Space;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Perceptor {
+public class Perceptor implements Serializable {
 
     private int perceptionRadius;
 
@@ -23,7 +24,7 @@ public class Perceptor {
     public Perceptor(Agent parent, ThreatEvent... threatObserver){
         this.parent = parent;
         this.perceptionRadius = SimulationDefaults.PERCEPTION_RADIUS;
-        if(threatObserver != null){
+        if(threatObserver.length > 0){
             this.threatObserver = threatObserver[0];
         }
     }

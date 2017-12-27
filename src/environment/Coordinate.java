@@ -1,8 +1,9 @@
 package environment;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Coordinate {
+public class Coordinate implements Serializable{
 
     public static final List<Coordinate> VECTOR_NEIGHBOURS = Arrays.asList(
             new Coordinate(  0, -1 ),   // top

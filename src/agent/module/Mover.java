@@ -49,7 +49,7 @@ public class Mover {
     }
 
     /**
-     * Perfoms setup on the Space that the parent is moving to
+     * Performs setup on the Space that the parent is moving to
      * @param targetSpace
      */
     public void targetSpaceSetup(Space targetSpace){

@@ -2,9 +2,10 @@ package agent.module;
 
 import environment.Coordinate;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pathfinder {
+public class Pathfinder implements Serializable {
 
     private Coordinate start;
     private Coordinate end;

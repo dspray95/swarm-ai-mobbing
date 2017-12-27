@@ -5,7 +5,9 @@ import agent.module.Pathfinder;
 import environment.Coordinate;
 import environment.Environment;
 
-public abstract class Agent {
+import java.io.Serializable;
+
+public abstract class Agent implements Serializable {
 
     int hitpoints;
     int speed;
