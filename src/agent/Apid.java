@@ -5,12 +5,13 @@ import agent.module.state.Guard;
 import agent.module.state.Mob;
 import agent.module.state.State;
 import agent.module.state.Worker;
+import agent.pheremone.Pheromone;
 import config.SimulationDefaults;
 import environment.Coordinate;
 import environment.Environment;
-import environment.Space;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Apid extends Agent implements ThreatEvent, Serializable {
 
@@ -64,8 +65,14 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
      * Increments the value of pheromone strength in the apid's current space
      */
     public void setPheromone(){
-        Space space = environment.getEnvironmentMap()[location.X()][location.Y()];
-        space.setPheromoneStrength(space.getPheromoneStrength() + 1);
+        ArrayList<Pheromone> environmentPheromones = environment.getPheromones();
+        for(Pheromone pheromone : environmentPheromones){
+            if(pheromone.getLocation() == this.location){
+                pheromone.increaseStrength();
+                return;
+            }
+        }
+        environment.addPheromone(new Pheromone(this.location));
     }
 
     @Override

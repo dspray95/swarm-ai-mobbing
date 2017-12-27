@@ -1,21 +1,25 @@
 package environment;
 
 import agent.Apid;
+import agent.Vespid;
+import agent.pheremone.Pheromone;
 import agent.swarm.Swarm;
 import config.SimulationDefaults;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Environment implements Serializable {
 
-    private Space[][] environmentMap;
     private int environmentSize;
+
     private Swarm apidSwarm;
+    private ArrayList<Vespid> vespidae;
+    private ArrayList<Pheromone> pheromones;
 
     public Environment(int... argSwarmSize) throws IllegalArgumentException{
         this.environmentSize = SimulationDefaults.ENVIRONMENT_SIZE;
-        this.environmentMap = createEnvironmentMap();
         //optional configuration for swarm size
         if(argSwarmSize.length > 0){
             try{
@@ -28,18 +32,8 @@ public class Environment implements Serializable {
         else{
             this.apidSwarm = new Swarm();
         }
-    }
-
-    /**
-     * Generates a sparse 2d matrix on which agents operate
-     * @return 2d sparse matrix
-     */
-    public Space[][] createEnvironmentMap(){
-        Space[][] environmentMap = new Space[this.environmentSize][];
-        for(int i = 0; i < environmentMap.length; i++){
-            environmentMap[i] = new Space[this.environmentSize];
-        }
-        return environmentMap;
+        this.vespidae = new ArrayList<>();
+        this.pheromones = new ArrayList<>();
     }
 
     /**
@@ -82,20 +76,9 @@ public class Environment implements Serializable {
             Coordinate location = new Coordinate();
             try {
                  location = generateFuzzyCoordinate(environmentCenter, deploymentArea);
-                 if(null != environmentMap[location.X()][location.Y()]){
-                     boolean spaceHasObject = environmentMap[location.X()][location.Y()].getApid() != null;
-                     while (spaceHasObject) {
-                        location = coordinateNudge(location);
-                        //Check if the new location is occupied
-                        if (null == environmentMap[location.X()][location.Y()]){
-                            spaceHasObject = false;
-                        }
-                    }
-                 }
             }catch(IllegalArgumentException e){
                 System.out.print(e);
-                return;
-                //TODO error recovery
+                return; //TODO error recovery
             }
             finally {
                 addApid(new Apid(location, this), i, location);
@@ -115,7 +98,6 @@ public class Environment implements Serializable {
         //TODO validation
         Space space = new Space();
         space.setApid(apid);
-        environmentMap[location.X()][location.Y()] = space;
         apidSwarm.addAgent(apid, index);
     }
     /**
@@ -174,8 +156,12 @@ public class Environment implements Serializable {
         return new Coordinate(r.nextInt(boundX) + lowerBoundX, r.nextInt(boundY) + lowerBoundY);
     }
 
-    public Space[][] getEnvironmentMap(){return this.environmentMap;}
-    public Swarm getApidSwarm(){return this.apidSwarm;}
+    public void addPheromone(Pheromone pheromone){
+        this.pheromones.add(pheromone);
+    }
 
+    public Swarm getApidSwarm(){return this.apidSwarm;}
+    public ArrayList<Vespid> getVespidae(){return this.vespidae;}
+    public ArrayList<Pheromone> getPheromones(){return this.pheromones;}
 }
 

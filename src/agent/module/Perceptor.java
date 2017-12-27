@@ -4,9 +4,10 @@ import agent.Agent;
 import agent.Apid;
 import agent.Vespid;
 import agent.listener.ThreatEvent;
+import agent.pheremone.Pheromone;
 import config.SimulationDefaults;
 import environment.Coordinate;
-import environment.Space;
+import environment.Environment;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Perceptor implements Serializable {
     private ThreatEvent threatObserver;
     private ArrayList<Apid> perceivedApidae;
     private ArrayList<Vespid> perceivedVespidae;
-    private ArrayList<Integer> perceivedPheremones;
+    private ArrayList<Pheromone> perceivedPheremones;
 
     public Perceptor(Agent parent, ThreatEvent... threatObserver){
         this.parent = parent;
@@ -48,26 +49,24 @@ public class Perceptor implements Serializable {
             }
         }
         //Get a reference to the environment map
-        Space[][] environmentMap = parent.getEnvironment().getEnvironmentMap();
-        //Now check through every coordinate in the bounds, also validating if they're within the euclidean radius
-        for(Coordinate coordinate : squareBounds){
-            int x = coordinate.X();
-            int y = coordinate.Y();
-            //Only perceive if the coordinate is within the bounds
-            if(coordinate.euclideanDistance(currentLocation) <= perceptionRadius && null != environmentMap[x][y]){
-                //Now that we've narrowed down to radius, we can check for objects to perceive
-                if(0 != environmentMap[x][y].getPheromoneStrength()){
-                    perceivedPheremones.add(environmentMap[x][y].getPheromoneStrength());
+        Environment environment = parent.getEnvironment();
+        //Loop through each object belonging to the environment to see if it is in perceptive range
+        for(Apid apid : environment.getApidSwarm().getAgents()){ //check for apidae
+            if(apid.getLocation().euclideanDistance(currentLocation) <= perceptionRadius){
+                perceivedApidae.add(apid);
+            }
+        }
+        for(Vespid vespid : environment.getVespidae()){ //check for vespidae, if detected broadcast an alert
+            if(vespid.getLocation().euclideanDistance(currentLocation) <= perceptionRadius){
+                perceivedVespidae.add(vespid);
+                if(threatObserver!=null) {
+                    threatObserver.threatAlert();
                 }
-                if(null != environmentMap[x][y].getApid() && environmentMap[x][y].getApid() != parent){ //exclude parent from perceieve list
-                    perceivedApidae.add(environmentMap[x][y].getApid());
-                    if(threatObserver!=null) {
-                        threatObserver.threatAlert();
-                    }
-                }
-                else if(null != environmentMap[x][y].getVespid() && environmentMap[x][y].getVespid() != parent){
-                    perceivedVespidae.add(environmentMap[x][y].getVespid());
-                }
+            }
+        }
+        for(Pheromone pheromone : environment.getPheromones()){ //Check for pheromones
+            if(pheromone.getLocation().euclideanDistance(currentLocation) <= perceptionRadius){
+                perceivedPheremones.add(pheromone);
             }
         }
     }

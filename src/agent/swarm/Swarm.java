@@ -1,29 +1,29 @@
 package agent.swarm;
 
-import agent.Agent;
+import agent.Apid;
 import config.SimulationDefaults;
 
 import java.io.Serializable;
 
 public class Swarm implements Serializable{
 
-    private Agent[] swarm;
+    private Apid[] swarm;
     private int swarmSize;
 
     public Swarm(){
         swarmSize = SimulationDefaults.SWARM_SIZE;
-        swarm = new Agent[SimulationDefaults.SWARM_SIZE];
+        swarm = new Apid[SimulationDefaults.SWARM_SIZE];
     }
 
     public Swarm(int swarmSize){
         this.swarmSize = swarmSize;
-        swarm = new Agent[swarmSize];
+        swarm = new Apid[swarmSize];
     }
 
-    public void addAgent(Agent agent, int index){
+    public void addAgent(Apid agent, int index){
         swarm[index] = agent;
     }
 
-    public Agent[] getAgents(){return this.swarm;}
+    public Apid[] getAgents(){return this.swarm;}
     public int getSwarmSize(){ return this.swarmSize; }
 }
