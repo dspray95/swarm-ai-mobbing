@@ -6,7 +6,7 @@ import agent.pheremone.Pheromone;
 import agent.swarm.Swarm;
 import config.SimulationDefaults;
 import simulation.Simulator;
-import simulation.TickerEventListener;
+import simulation.listener.TickerEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class Environment implements Serializable, TickerEventListener {
     private ArrayList<Vespid> vespidae;
     private ArrayList<Pheromone> pheromones;
 
-    static ArrayList<TickerEventListener> tickerEventListeners;
+    private ArrayList<TickerEventListener> tickerEventListeners;
 
     public Environment(int... argSwarmSize) throws IllegalArgumentException{
         this.simulator = simulator;
@@ -40,6 +40,7 @@ public class Environment implements Serializable, TickerEventListener {
         }
         this.vespidae = new ArrayList<>();
         this.pheromones = new ArrayList<>();
+        this.tickerEventListeners = new ArrayList<>();
     }
 
     /**
@@ -87,7 +88,7 @@ public class Environment implements Serializable, TickerEventListener {
                 return; //TODO error recovery
             }
             finally {
-                addApid(new Apid(location, this), i, location);
+                addApid(new Apid(location, this));
             }
         }
         long endTime = System.nanoTime();
@@ -97,10 +98,8 @@ public class Environment implements Serializable, TickerEventListener {
     /**
      * Add a pre-created apid to the environment space
      * @param apid Apid agent to add
-     * @param index index at which to add the apid to the swarm array
-     * @param location location at which the apid should appear
      */
-    public void addApid(Apid apid, int index, Coordinate location){
+    public void addApid(Apid apid){
         //TODO validation
         apidSwarm.add(apid);
         registerTickerListener(apid);

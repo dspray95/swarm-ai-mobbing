@@ -6,7 +6,7 @@ import agent.module.Perceptor;
 import agent.module.state.State;
 import environment.Coordinate;
 import environment.Environment;
-import simulation.TickerEventListener;
+import simulation.listener.TickerEventListener;
 
 import java.io.Serializable;
 

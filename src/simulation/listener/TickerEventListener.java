@@ -1,4 +1,4 @@
-package simulation;
+package simulation.listener;
 
 import java.io.Serializable;
 

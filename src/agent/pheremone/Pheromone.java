@@ -1,7 +1,7 @@
 package agent.pheremone;
 
 import environment.Coordinate;
-import simulation.TickerEventListener;
+import simulation.listener.TickerEventListener;
 
 public class Pheromone implements TickerEventListener {
 
@@ -13,7 +13,7 @@ public class Pheromone implements TickerEventListener {
     }
 
     public void increaseStrength(){
-        this.strength++;
+        strength = strength + 10;
     }
 
     public Coordinate getLocation(){
@@ -22,6 +22,6 @@ public class Pheromone implements TickerEventListener {
 
     @Override
     public void tickerEvent() {
-
+        strength--;
     }
 }
