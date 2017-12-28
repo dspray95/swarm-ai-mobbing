@@ -36,6 +36,7 @@ public class Logger implements Serializable{
         try {
             fos = new FileOutputStream(filepath + filename);
             out = new ObjectOutputStream(fos);
+            out.writeChars(System.getProperty("line.separator"));
             out.writeObject(object);
             out.close();
             String writtenTo = filepath + filename;
@@ -63,5 +64,13 @@ public class Logger implements Serializable{
             ex.printStackTrace();
             return null;
         }
+    }
+
+    public String getFilepath(){
+        return this.filepath;
+    }
+
+    public String getFilename(){
+        return this.filename;
     }
 }

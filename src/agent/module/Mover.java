@@ -3,7 +3,9 @@ package agent.module;
 import agent.Agent;
 import environment.Coordinate;
 
-public class Mover {
+import java.io.Serializable;
+
+public class Mover implements Serializable{
 
     Agent parent;
     Class parentType;

@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="909ef0fc-9796-4906-9b36-3c04e5beaf2b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/agent/Agent.java" afterPath="$PROJECT_DIR$/src/agent/Agent.java" />
-      <change beforePath="$PROJECT_DIR$/src/agent/pheremone/Pheromone.java" afterPath="$PROJECT_DIR$/src/agent/pheremone/Pheromone.java" />
-      <change beforePath="$PROJECT_DIR$/src/environment/Environment.java" afterPath="$PROJECT_DIR$/src/environment/Environment.java" />
-      <change beforePath="$PROJECT_DIR$/src/simulation/TickerEventListener.java" afterPath="$PROJECT_DIR$/src/simulation/listener/TickerEventListener.java" />
+      <change beforePath="$PROJECT_DIR$/src/agent/module/Mover.java" afterPath="$PROJECT_DIR$/src/agent/module/Mover.java" />
+      <change beforePath="$PROJECT_DIR$/src/config/SimulationDefaults.java" afterPath="$PROJECT_DIR$/src/config/SimulationDefaults.java" />
+      <change beforePath="$PROJECT_DIR$/src/simulation/Logger.java" afterPath="$PROJECT_DIR$/src/simulation/Logger.java" />
+      <change beforePath="$PROJECT_DIR$/src/simulation/Simulator.java" afterPath="$PROJECT_DIR$/src/simulation/Simulator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,10 +20,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Environment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Environment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/environment/Environment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
+            <state relative-caret-position="3078">
               <caret line="194" column="35" lean-forward="true" selection-start-line="194" selection-start-column="35" selection-end-line="194" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -32,36 +31,6 @@
                 <element signature="e#6263#6264#0" expanded="true" />
                 <element signature="e#6336#6337#0" expanded="true" />
                 <element signature="e#6389#6390#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Perceptor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/agent/module/Perceptor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="52" column="60" lean-forward="false" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pheromone.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/agent/pheremone/Pheromone.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#248#249#0" expanded="true" />
-                <element signature="e#288#289#0" expanded="true" />
-                <element signature="e#325#326#0" expanded="true" />
-                <element signature="e#365#366#0" expanded="true" />
-                <element signature="e#403#404#0" expanded="true" />
-                <element signature="e#439#440#0" expanded="true" />
-                <element signature="e#486#487#0" expanded="true" />
-                <element signature="e#512#513#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,9 +49,14 @@
       <file leaf-file-name="Logger.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/simulation/Logger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="147">
+              <caret line="37" column="46" lean-forward="true" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
+              <folding>
+                <element signature="e#2102#2103#0" expanded="true" />
+                <element signature="e#2138#2139#0" expanded="true" />
+                <element signature="e#2172#2173#0" expanded="true" />
+                <element signature="e#2208#2209#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,18 +64,50 @@
       <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/simulation/Simulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+            <state relative-caret-position="152">
+              <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimulatorTest.groovy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/simulation/SimulatorTest.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Apid.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/agent/Apid.java">
+      <file leaf-file-name="Mover.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/agent/module/Mover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="23" column="16" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+            <state relative-caret-position="68">
+              <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoggerTest.groovy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/LoggerTest.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="27" column="40" lean-forward="true" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimulationDefaults.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/SimulationDefaults.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -128,16 +134,6 @@
               <folding>
                 <element signature="e#15#44#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Coordinate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/environment/Coordinate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="47" lean-forward="false" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -173,7 +169,6 @@
         <option value="$PROJECT_DIR$/src/agent/module/pathfinding/Pathfinder.java" />
         <option value="$PROJECT_DIR$/test/agent/module/PerceptionModuleTest.groovy" />
         <option value="$PROJECT_DIR$/src/agent/module/PerceptionModule.java" />
-        <option value="$PROJECT_DIR$/src/config/SimulationDefaults.java" />
         <option value="$PROJECT_DIR$/test/agent/module/PerceptorTest.groovy" />
         <option value="$PROJECT_DIR$/src/agent/module/state/Working.java" />
         <option value="$PROJECT_DIR$/src/agent/listener/ThreatListener.java" />
@@ -189,14 +184,11 @@
         <option value="$PROJECT_DIR$/src/Logger.java" />
         <option value="$PROJECT_DIR$/test/LoggerTest.groovy" />
         <option value="$PROJECT_DIR$/src/environment/Pheromone.java" />
-        <option value="$PROJECT_DIR$/src/agent/module/Mover.java" />
-        <option value="$PROJECT_DIR$/src/simulation/Logger.java" />
         <option value="$PROJECT_DIR$/src/agent/listener/TickerEvent.java" />
         <option value="$PROJECT_DIR$/src/simulation/TickerEvent.java" />
         <option value="$PROJECT_DIR$/src/agent/module/state/State.java" />
         <option value="$PROJECT_DIR$/src/agent/Apid.java" />
         <option value="$PROJECT_DIR$/src/simulation/TickerEventListener.java" />
-        <option value="$PROJECT_DIR$/src/simulation/Simulator.java" />
         <option value="$PROJECT_DIR$/src/agent/swarm/Swarm.java" />
         <option value="$PROJECT_DIR$/src/agent/module/Perceptor.java" />
         <option value="$PROJECT_DIR$/src/agent/Agent.java" />
@@ -204,6 +196,11 @@
         <option value="$PROJECT_DIR$/src/simulation/listener/TickerEventListener.java" />
         <option value="$PROJECT_DIR$/test/agent/AgentTest.groovy" />
         <option value="$PROJECT_DIR$/src/environment/Environment.java" />
+        <option value="$PROJECT_DIR$/src/config/SimulationDefaults.java" />
+        <option value="$PROJECT_DIR$/src/simulation/Simulator.java" />
+        <option value="$PROJECT_DIR$/src/simulation/Logger.java" />
+        <option value="$PROJECT_DIR$/test/simulation/SimulatorTest.groovy" />
+        <option value="$PROJECT_DIR$/src/agent/module/Mover.java" />
       </list>
     </option>
   </component>
@@ -268,6 +265,19 @@
               <item name="swarm-ai-mobbing" type="b2602c69:ProjectViewProjectNode" />
               <item name="swarm-ai-mobbing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="agent" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="swarm-ai-mobbing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="swarm-ai-mobbing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="swarm-ai-mobbing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="swarm-ai-mobbing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="environment" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -279,9 +289,13 @@
             <path>
               <item name="swarm-ai-mobbing" type="b2602c69:ProjectViewProjectNode" />
               <item name="swarm-ai-mobbing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="listener" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="swarm-ai-mobbing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="swarm-ai-mobbing" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="environment" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -299,11 +313,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="simulation" />
       <recent name="agent" />
       <recent name="" />
       <recent name="agent.module" />
       <recent name="agent.module.pathfinding" />
-      <recent name="environment" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="agent.module" />
@@ -328,7 +342,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="AgentTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SimulatorTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="environment.*" />
@@ -338,8 +352,8 @@
       <module name="swarm-ai-mobbing" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="agent" />
-      <option name="MAIN_CLASS_NAME" value="agent.AgentTest" />
+      <option name="PACKAGE_NAME" value="simulation" />
+      <option name="MAIN_CLASS_NAME" value="simulation.SimulatorTest" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="" />
@@ -437,7 +451,7 @@
     </configuration>
     <recent_temporary>
       <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Android JUnit.AgentTest" />
+        <item index="0" class="java.lang.String" itemvalue="Android JUnit.SimulatorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -467,26 +481,26 @@
     <history-entry file="AgentTest - 2017.12.28 at 14h 09m 44s.xml">
       <configuration name="AgentTest" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="LoggerTest - 2017.12.27 at 13h 27m 11s.xml">
-      <configuration name="LoggerTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="LoggerTest - 2017.12.27 at 13h 30m 57s.xml">
-      <configuration name="LoggerTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="LoggerTest - 2017.12.27 at 13h 34m 58s.xml">
-      <configuration name="LoggerTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="LoggerTest - 2017.12.27 at 13h 36m 24s.xml">
-      <configuration name="LoggerTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="LoggerTest - 2017.12.27 at 13h 37m 30s.xml">
-      <configuration name="LoggerTest" configurationId="AndroidJUnit" />
-    </history-entry>
     <history-entry file="LoggerTest - 2017.12.27 at 13h 40m 58s.xml">
       <configuration name="LoggerTest" configurationId="AndroidJUnit" />
     </history-entry>
     <history-entry file="LoggerTest - 2017.12.27 at 15h 44m 31s.xml">
       <configuration name="LoggerTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="SimulatorTest - 2017.12.28 at 14h 19m 59s.xml">
+      <configuration name="SimulatorTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="SimulatorTest - 2017.12.28 at 14h 22m 03s.xml">
+      <configuration name="SimulatorTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="SimulatorTest - 2017.12.28 at 14h 24m 34s.xml">
+      <configuration name="SimulatorTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="SimulatorTest - 2017.12.28 at 14h 25m 47s.xml">
+      <configuration name="SimulatorTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="SimulatorTest - 2017.12.28 at 14h 26m 57s.xml">
+      <configuration name="SimulatorTest" configurationId="AndroidJUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -582,7 +596,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/simulation/Logger.java</url>
-          <line>56</line>
+          <line>57</line>
           <properties />
           <option name="timeStamp" value="52" />
         </line-breakpoint>
@@ -635,14 +649,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/environment/Coordinate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config/SimulationDefaults.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -847,14 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/SimulationDefaults.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/agent/Vespid.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -870,25 +868,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/environment/Pheromone.java" />
-    <entry file="file://$PROJECT_DIR$/src/agent/module/Mover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/agent/listener/ThreatEvent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/LoggerTest.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="40" lean-forward="true" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -903,14 +886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="377">
           <caret line="54" column="4" lean-forward="false" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulation/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -964,14 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulation/Simulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/agent/swarm/Swarm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1006,9 +973,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/SimulationDefaults.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/LoggerTest.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="27" column="40" lean-forward="true" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulation/Simulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/environment/Environment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
+        <state relative-caret-position="3078">
           <caret line="194" column="35" lean-forward="true" selection-start-line="194" selection-start-column="35" selection-end-line="194" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1017,6 +1010,35 @@
             <element signature="e#6336#6337#0" expanded="true" />
             <element signature="e#6389#6390#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulation/Logger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="37" column="46" lean-forward="true" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
+          <folding>
+            <element signature="e#2102#2103#0" expanded="true" />
+            <element signature="e#2138#2139#0" expanded="true" />
+            <element signature="e#2172#2173#0" expanded="true" />
+            <element signature="e#2208#2209#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/simulation/SimulatorTest.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/agent/module/Mover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>
