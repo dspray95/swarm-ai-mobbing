@@ -6,6 +6,7 @@ import java.io.*;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Logger implements Serializable{
@@ -13,6 +14,7 @@ public class Logger implements Serializable{
     String filepath;
     String filename;
     Environment environmentState;
+    ArrayList<Object> storedStates;
 
     public Logger() throws Exception{
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
@@ -27,17 +29,23 @@ public class Logger implements Serializable{
             }
         }
         filename = dateFormat.format(date) + ".swarmlog";
+        storedStates = new ArrayList<>();
     }
 
-    public boolean log(Object object){
+    public void addStoredState(Object object){
+        storedStates.add(object);
+    }
+
+    public boolean log(){
         // save the object to file
         FileOutputStream fos = null;
         ObjectOutputStream out = null;
         try {
             fos = new FileOutputStream(filepath + filename);
             out = new ObjectOutputStream(fos);
-            out.writeChars(System.getProperty("line.separator"));
-            out.writeObject(object);
+            for(Object obj : storedStates){
+                out.writeObject(obj);
+            }
             out.close();
             String writtenTo = filepath + filename;
             System.out.println(writtenTo);
@@ -48,18 +56,20 @@ public class Logger implements Serializable{
         }
     }
 
-    public Environment load(){
+    public ArrayList<Environment> loadStates(){
         // read the object from file
         // save the object to
-        Environment env;
+        ArrayList<Environment> readStates = new ArrayList<>();
         FileInputStream fis = null;
         ObjectInputStream in = null;
         try {
             fis = new FileInputStream(filepath + filename);
             in = new ObjectInputStream(fis);
-            env = (Environment) in.readObject();
+            for(int i = 0; i < storedStates.size(); i++){
+                readStates.add((Environment) in.readObject());
+            }
             in.close();
-            return env;
+            return readStates;
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;

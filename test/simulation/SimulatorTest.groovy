@@ -22,8 +22,9 @@ class SimulatorTest extends GroovyTestCase {
     void testRunSimulationForTicks() {
         for(int i = 0; i <= 20; i++){
             environment.tickerEvent()
-            logger.log(environment)
+            logger.addStoredState(environment)
         }
+        logger.log()
         assertTrue(new File(logger.getFilepath() + logger.getFilename()).exists())
     }
 }

@@ -1,4 +1,3 @@
-import environment.Coordinate
 import environment.Environment
 import simulation.Logger
 
@@ -20,12 +19,18 @@ class LoggerTest extends GroovyTestCase {
     }
 
     void testLog() {
-        assertTrue(logger.log(new Coordinate(10, 25)))
+        logger.addStoredState(environment);
+        logger.log()
+        assertTrue(new File(logger.getFilepath() + logger.getFilename()).exists())
     }
 
     void testLoad(){
-        logger.log(environment)
-        Environment env = logger.load();
-        assertTrue(env!= null);
+        for(int i = 0; i <= 20; i++){
+            environment.tickerEvent()
+            logger.addStoredState(environment)
+        }
+        logger.log()
+        ArrayList<Environment> loadedStates = logger.loadStates()
+        assertTrue(loadedStates.size() > 0)
     }
 }

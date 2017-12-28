@@ -17,8 +17,9 @@ public class Simulator{
     public static void runSimulationForTicks(int numTicks){
         for(int i = 0; i <= numTicks; i++){
             environment.tickerEvent();
-            logger.log(environment);
+            logger.addStoredState(environment);
         }
+        logger.log();
     }
 
 }
