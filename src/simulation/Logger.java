@@ -36,6 +36,12 @@ public class Logger implements Serializable{
         storedStates.add(object);
     }
 
+    /**
+     *
+     * Writes every object in storedStates ArrayList sequentially to a SWARMLOG file in the absolute path with a timestamp
+     * filename
+     * @return true/false successful
+     */
     public boolean log(){
         // save the object to file
         FileOutputStream fos = null;
@@ -56,6 +62,12 @@ public class Logger implements Serializable{
         }
     }
 
+    /**
+     * Sequentially loads every state into an ArrayList from the previously written file
+     * @return Sequential arraylist of Environment states
+     *
+     * TODO: Vararg of specific file to load from, support for GUI user file selection
+     */
     public ArrayList<Environment> loadStates(){
         // read the object from file
         // save the object to

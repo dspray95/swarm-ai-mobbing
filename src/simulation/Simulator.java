@@ -5,16 +5,21 @@ import environment.Environment;
 
 public class Simulator{
 
-    static Environment environment;
-    static Logger logger;
+    private Environment environment;
+    private Logger logger;
 
-    public static void main(String args[]){
+    public Simulator(Logger logger){
         environment = new Environment();
-        //for sometime Environment.notifytick etc...
+        this.logger = logger;
+        //for some length of time Environment.notifytick()
         runSimulationForTicks(SimulationDefaults.SIMULATION_LENGTH);
     }
 
-    public static void runSimulationForTicks(int numTicks){
+    /**
+     * Runs the simulation for a defined number of ticks
+     * @param numTicks
+     */
+    public void runSimulationForTicks(int numTicks){
         for(int i = 0; i <= numTicks; i++){
             environment.tickerEvent();
             logger.addStoredState(environment);
