@@ -19,7 +19,7 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
     public static final int STATE_MOB = 2;
 
     private Coordinate location;
-    private int alertLevel;
+    transient private int alertLevel;
 
     public Apid(Coordinate location, Environment environment){
         super(location, environment);

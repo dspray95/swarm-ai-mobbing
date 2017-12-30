@@ -12,18 +12,18 @@ import java.io.Serializable;
 
 public abstract class Agent implements Serializable, TickerEventListener {
 
-    int hitpoints;
-    int speed;
-    double heatResistance;
-    double aggression;
+    transient int hitpoints;
+    transient int speed;
+    transient double heatResistance;
+    transient double aggression;
     //Environment data
     Coordinate location;
-    Environment environment;
+    transient Environment environment;
     //Modules
-    Pathfinder pathfinder;
-    Perceptor perceptor;
-    Mover mover;
-    State state;
+    transient Pathfinder pathfinder;
+    transient Perceptor perceptor;
+    transient Mover mover;
+    transient State state;
     public Agent(Coordinate location, Environment environment){
         this.location = location;
         this.environment = environment;

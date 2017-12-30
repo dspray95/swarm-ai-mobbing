@@ -1,6 +1,5 @@
 package simulation;
 
-import config.SimulationDefaults;
 import environment.Environment;
 
 public class Simulator{
@@ -12,7 +11,6 @@ public class Simulator{
         environment = new Environment();
         this.logger = logger;
         //for some length of time Environment.notifytick()
-        runSimulationForTicks(SimulationDefaults.SIMULATION_LENGTH);
     }
 
     /**
@@ -20,9 +18,14 @@ public class Simulator{
      * @param numTicks
      */
     public void runSimulationForTicks(int numTicks){
-        for(int i = 0; i <= numTicks; i++){
+
+        environment.populate();
+        for(int i = 0; i < numTicks; i++){
+            long startTime = System.nanoTime();
             environment.tickerEvent();
             logger.addStoredState(environment);
+            long endTime = System.nanoTime();
+            System.out.println("tick " + i + " in: " + ((endTime - startTime)/1000000) + "ms"); //TODO log file
         }
         logger.log();
     }

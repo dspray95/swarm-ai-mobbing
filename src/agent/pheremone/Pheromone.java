@@ -5,8 +5,8 @@ import simulation.listener.TickerEventListener;
 
 public class Pheromone implements TickerEventListener {
 
-    Coordinate location;
-    int strength;
+    private Coordinate location;
+    transient private int strength;
 
     public Pheromone(Coordinate location){
         this.location = location;

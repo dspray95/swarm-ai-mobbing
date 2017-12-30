@@ -14,14 +14,14 @@ import java.util.Random;
 
 public class Environment implements Serializable, TickerEventListener {
 
-    private int environmentSize;
+    transient private int environmentSize;
 
     private Simulator simulator;
     private Swarm apidSwarm;
     private ArrayList<Vespid> vespidae;
     private ArrayList<Pheromone> pheromones;
 
-    private ArrayList<TickerEventListener> tickerEventListeners;
+    transient private ArrayList<TickerEventListener> tickerEventListeners;
 
     public Environment(int... argSwarmSize) throws IllegalArgumentException{
         this.simulator = simulator;
