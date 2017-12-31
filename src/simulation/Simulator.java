@@ -7,8 +7,13 @@ public class Simulator{
     private Environment environment;
     private Logger logger;
 
-    public Simulator(Logger logger){
-        environment = new Environment();
+    public Simulator(Logger logger, int... argsSwarmSize){
+        if(argsSwarmSize.length > 0){
+            environment = new Environment(argsSwarmSize[0]);
+        }
+        else{
+            environment = new Environment();
+        }
         this.logger = logger;
         //for some length of time Environment.notifytick()
     }

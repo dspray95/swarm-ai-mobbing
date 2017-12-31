@@ -1,6 +1,7 @@
 package simulation
 
 import environment.Environment
+import org.junit.Test
 
 class SimulatorTest extends GroovyTestCase {
 
@@ -9,10 +10,8 @@ class SimulatorTest extends GroovyTestCase {
     Logger logger
 
     void setUp() {
-        environment = new Environment()
-        environment.populate()
         logger = new Logger()
-        simulator = new Simulator(logger)
+        simulator = new Simulator(logger, 100)
         super.setUp()
     }
 
@@ -22,15 +21,23 @@ class SimulatorTest extends GroovyTestCase {
         logger = null
     }
 
+    @Test
     void testRunSimulationForTicks() {
         simulator.runSimulationForTicks(20)
         ArrayList<Environment> loadedStates = logger.loadStates()
         assertTrue(loadedStates.size() == 20) //Assert that all of our saved states can be loaded
     }
 
-    void testRunSimulationForLargeTicks(){
-        simulator.runSimulationForTicks(10000)
-        ArrayList<Environment> loadedStates = logger.loadStates()
-        assertTrue(loadedStates.size() == 10000)
+    @Test
+    void testRunSimulationForMediumTicks(){
+        simulator.runSimulationForTicks(100)
+        assertTrue(logger.loadStates().size() == 100)
     }
+
+//    @Test @Ignore
+//    void testRunSimulationForLargeTicks(){
+//        simulator.runSimulationForTicks(10000)
+//        ArrayList<Environment> loadedStates = logger.loadStates()
+//        assertTrue(loadedStates.size() == 10000)
+//    }
 }

@@ -24,16 +24,10 @@ public class Environment implements Serializable, TickerEventListener {
     transient private ArrayList<TickerEventListener> tickerEventListeners;
 
     public Environment(int... argSwarmSize) throws IllegalArgumentException{
-        this.simulator = simulator;
         this.environmentSize = SimulationDefaults.ENVIRONMENT_SIZE;
         //optional configuration for swarm size
         if(argSwarmSize.length > 0){
-            try{
-                this.apidSwarm = new Swarm(argSwarmSize[0]);
-            }
-            catch(ArrayIndexOutOfBoundsException e){
-                throw new IllegalArgumentException( "optional swarm size must be greater than 0");
-            }
+                populate(SimulationDefaults.SWARM_DEPLOYMENT_AREA, argSwarmSize[0]);
         }
         else{
             this.apidSwarm = new Swarm();
