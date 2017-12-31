@@ -4,13 +4,9 @@ import agent.Apid;
 
 import java.util.ArrayList;
 
-public class SubSwarm implements Runnable {
+public class SubSwarm extends ArrayList<Apid> implements Runnable {
 
-    ArrayList<Apid> swarm;
-
-    public SubSwarm(ArrayList<Apid> members){
-        this.swarm = members;
-    }
+    public SubSwarm(){}
 
     @Override
     public void run() {
