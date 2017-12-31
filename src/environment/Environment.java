@@ -67,6 +67,7 @@ public class Environment implements Serializable, TickerEventListener {
         else{
             this.apidSwarm = new Swarm(SimulationDefaults.SWARM_SIZE);
         }
+        registerTickerListener(apidSwarm);
         //Get the center of  the environment
         Coordinate environmentCenter = new Coordinate(
                 environmentSize/2,
@@ -96,7 +97,6 @@ public class Environment implements Serializable, TickerEventListener {
     public void addApid(Apid apid){
         //TODO validation
         apidSwarm.add(apid);
-        registerTickerListener(apid);
     }
 
     public void addVespid(Vespid vespid){
