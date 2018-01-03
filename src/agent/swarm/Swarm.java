@@ -1,24 +1,33 @@
 package agent.swarm;
 
 import agent.Apid;
+import agent.listener.ThreadDoneListener;
 import config.SimulationDefaults;
+import environment.Environment;
 import simulation.listener.TickerEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Swarm extends ArrayList<Apid> implements TickerEventListener, Serializable{
+public class Swarm extends ArrayList<Apid> implements TickerEventListener, ThreadDoneListener, Serializable{
+
 
     private int swarmSize;
+    transient private Environment environment;
     transient private boolean multithreading;
     transient private boolean multithreadingSetup;
     transient private ArrayList<SubSwarm> subswarms;
+    //used to keep track of threads
+    public int numThreads;
+    public int numThreadsDone;
 
-    public Swarm(){
+    public Swarm(Environment environment){
+        this.environment = environment;
         swarmSize = SimulationDefaults.SWARM_SIZE;
     }
 
-    public Swarm(int swarmSize){
+    public Swarm(Environment environment, int swarmSize){
+        this.environment = environment;
         this.swarmSize = swarmSize;
     }
 
@@ -30,10 +39,10 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Seria
 
     public boolean setupMultithreading(){
         subswarms = new ArrayList<>();
-        int numProcessors = Runtime.getRuntime().availableProcessors() - 1;
-        int subswarmSize = this.size()/numProcessors;
-        for(int i = 1; i <= numProcessors; i++){
-            SubSwarm subswarm = new SubSwarm();
+        numThreads = Runtime.getRuntime().availableProcessors() - 1;
+        int subswarmSize = this.size()/numThreads;
+        for(int i = 1; i <= numThreads; i++){
+            SubSwarm subswarm = new SubSwarm(this);
             /**
              * example...
              * Numprocessors = 5
@@ -44,14 +53,7 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Seria
              * for subgroup i = 1...
              * bottom bound = 1 = (i-1 * 80) + 1
              * upper bound = 80 = i * 80 (80 total indicies)
-             *
-             * for subgroup i = 2...
-             * bottom bound = 81 = i-1 * 80 + 1
-             * upper bound = 160 = i * 80
-             *
-             * for subground i = 3...
-             * bottom bound = 161 = i-1 * 80 + 1
-             */
+            */
             int lowerBound = ((i-1) * subswarmSize)+1;
             int upperBound = i*subswarmSize;
             for(int j = lowerBound; j<=upperBound; j++){
@@ -65,7 +67,7 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Seria
 
     @Override
     public void tickerEvent() {
-        if(multithreading){
+        if(!multithreading){
             for (Apid apid : this){
                 apid.tickerEvent();
             }
@@ -73,6 +75,19 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Seria
             if(multithreadingSetup){
                 multithreadingSetup = setupMultithreading();
             }
+            for(SubSwarm subSwarm : subswarms){
+                subSwarm.run();
+            }
+            environment.setDoingMultiThreading(true);
+        }
+    }
+
+    @Override
+    public void threadDone(){
+        numThreadsDone++;
+        if(numThreadsDone == numThreads){
+            environment.setDoingMultiThreading(false);
+            numThreadsDone = 0;
         }
     }
 

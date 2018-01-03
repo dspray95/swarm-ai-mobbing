@@ -22,6 +22,7 @@ public class Environment implements Serializable, TickerEventListener {
     private ArrayList<Pheromone> pheromones;
 
     transient private ArrayList<TickerEventListener> tickerEventListeners;
+    transient private boolean threadsRunning;
 
     public Environment(int... argSwarmSize) throws IllegalArgumentException{
         this.environmentSize = SimulationDefaults.ENVIRONMENT_SIZE;
@@ -30,7 +31,7 @@ public class Environment implements Serializable, TickerEventListener {
                 populate(SimulationDefaults.SWARM_DEPLOYMENT_AREA, argSwarmSize[0]);
         }
         else{
-            this.apidSwarm = new Swarm();
+            this.apidSwarm = new Swarm(this);
         }
         this.vespidae = new ArrayList<>();
         this.pheromones = new ArrayList<>();
@@ -59,13 +60,13 @@ public class Environment implements Serializable, TickerEventListener {
         //varargs validation for swarm size
         if(argsPopulation.length > 1){
             if(argsPopulation[1] > 0){
-                this.apidSwarm = new Swarm(argsPopulation[1]);
+                this.apidSwarm = new Swarm(this, argsPopulation[1]);
             } else{
                 throw new IllegalArgumentException("Swarm size must be greater than 0");
             }
         }
         else{
-            this.apidSwarm = new Swarm(SimulationDefaults.SWARM_SIZE);
+            this.apidSwarm = new Swarm(this, SimulationDefaults.SWARM_SIZE);
         }
         registerTickerListener(apidSwarm);
         //Get the center of  the environment
@@ -172,21 +173,20 @@ public class Environment implements Serializable, TickerEventListener {
         tickerEventListeners.remove(listener);
     }
 
-    public void notifyTickerListeners(){
-        for(TickerEventListener listener : tickerEventListeners){
-            listener.tickerEvent();
-        }
-    }
 
     public Simulator getSimulator(){return this.getSimulator();}
     public Swarm getApidSwarm(){return this.apidSwarm;}
     public ArrayList<Vespid> getVespidae(){return this.vespidae;}
     public ArrayList<Pheromone> getPheromones(){return this.pheromones;}
 
+    public void setDoingMultiThreading(boolean bool){this.threadsRunning = bool;}
+
     @Override
     public void tickerEvent() {
-        for(TickerEventListener listener : tickerEventListeners){
-            listener.tickerEvent();
+        if(!threadsRunning){
+            for(TickerEventListener listener : tickerEventListeners){
+                listener.tickerEvent();
+            }
         }
     }
 }
