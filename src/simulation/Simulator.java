@@ -7,13 +7,8 @@ public class Simulator{
     private Environment environment;
     private Logger logger;
 
-    public Simulator(Logger logger, int... argsSwarmSize){
-        if(argsSwarmSize.length > 0){
-            environment = new Environment(argsSwarmSize[0]);
-        }
-        else{
-            environment = new Environment();
-        }
+    public Simulator(Logger logger, SimulationOptions options){
+        environment = new Environment(options);
         this.logger = logger;
         //for some length of time Environment.notifytick()
     }
@@ -23,8 +18,6 @@ public class Simulator{
      * @param numTicks
      */
     public void runSimulationForTicks(int numTicks){
-
-        environment.populate();
         for(int i = 0; i < numTicks; i++){
             long startTime = System.nanoTime();
             environment.tickerEvent();

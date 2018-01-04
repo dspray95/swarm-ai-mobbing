@@ -12,17 +12,20 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import simulation.Logger;
+import simulation.SimulationOptions;
 import simulation.Simulator;
 
 import java.util.ArrayList;
 
 public class Main extends Application {
     //GUI controls
-    static StackPane homePane;
-    static Button btnRunSimulation;
-    static Button btnRunVisualiser;
-    static Label lblBanner;
-    static Logger logger;
+    private static StackPane homePane;
+    private static Button btnRunSimulation;
+    private static Button btnRunVisualiser;
+    private static Label lblBanner;
+    private static Logger logger;
+
+    private SimulationOptions options;
 
     public static void main(String args[]){
         homePane = new StackPane();
@@ -72,7 +75,8 @@ public class Main extends Application {
                 return;
             }
             System.out.println("Running sim...");
-            Simulator simulator = new Simulator(logger);
+            options = new SimulationOptions(); //TODO use user defined options via GUI
+            Simulator simulator = new Simulator(logger, options);
             simulator.runSimulationForTicks(20);
         }
         else if(eventButton == btnRunVisualiser){

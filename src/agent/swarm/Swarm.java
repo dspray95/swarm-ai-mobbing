@@ -2,12 +2,12 @@ package agent.swarm;
 
 import agent.Apid;
 import agent.listener.ThreadDoneListener;
-import config.SimulationDefaults;
 import environment.Environment;
 import simulation.listener.TickerEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.concurrent.ForkJoinPool;
 
 public class Swarm extends ArrayList<Apid> implements TickerEventListener, ThreadDoneListener, Serializable{
 
@@ -16,19 +16,19 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Threa
     transient private Environment environment;
     transient private boolean multithreading;
     transient private boolean multithreadingSetup;
-    transient private ArrayList<SubSwarm> subswarms;
+    transient private ArrayList<Subswarm> subswarms;
     //used to keep track of threads
-    public int numThreads;
-    public int numThreadsDone;
+    private int numThreads;
+    private int numThreadsDone;
+    ArrayList<Thread> threads;
+    //Fork/Join
+    private ForkJoinPool commonPool;
 
-    public Swarm(Environment environment){
-        this.environment = environment;
-        swarmSize = SimulationDefaults.SWARM_SIZE;
-    }
-
-    public Swarm(Environment environment, int swarmSize){
+    public Swarm(Environment environment, int swarmSize, boolean multithreading){
+        commonPool = ForkJoinPool.commonPool();
         this.environment = environment;
         this.swarmSize = swarmSize;
+        this.multithreading = multithreading;
     }
 
     public void setMultithreading(boolean multithreading){
@@ -39,10 +39,12 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Threa
 
     public boolean setupMultithreading(){
         subswarms = new ArrayList<>();
-        numThreads = Runtime.getRuntime().availableProcessors() - 1;
+        threads = new ArrayList<>();
+//        numThreads = Runtime.getRuntime().availableProcessors() -2;
+        numThreads = 4;
         int subswarmSize = this.size()/numThreads;
         for(int i = 1; i <= numThreads; i++){
-            SubSwarm subswarm = new SubSwarm(this);
+            Subswarm subswarm = new Subswarm(this);
             /**
              * example...
              * Numprocessors = 5
@@ -60,6 +62,8 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Threa
                 subswarm.add(this.get(j-1));
             }
             subswarms.add(subswarm);
+            Thread thread = new Thread(subswarm);
+            threads.add(thread);
         }
 
         return true;
@@ -72,13 +76,19 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Threa
                 apid.tickerEvent();
             }
         } else{
-            if(multithreadingSetup){
+            if(!multithreadingSetup){
                 multithreadingSetup = setupMultithreading();
             }
-            for(SubSwarm subSwarm : subswarms){
-                subSwarm.run();
+            environment.setThreadsRunning(true);
+            for(Thread thread : threads){
+                thread.start();
             }
-            environment.setDoingMultiThreading(true);
+            try {
+                System.out.println("Waiting for threads to finish.");
+                threads.get(numThreads-1).join();
+            } catch (InterruptedException e) {
+                System.out.println("Main thread Interrupted");
+            }
         }
     }
 
@@ -86,11 +96,11 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Threa
     public void threadDone(){
         numThreadsDone++;
         if(numThreadsDone == numThreads){
-            environment.setDoingMultiThreading(false);
+            environment.setThreadsRunning(false);
             numThreadsDone = 0;
         }
     }
 
-    public ArrayList<SubSwarm> getSubswarms(){return this.subswarms;}
+    public ArrayList<Subswarm> getSubswarms(){return this.subswarms;}
 
 }

@@ -7,11 +7,15 @@ class SimulatorTest extends GroovyTestCase {
 
     Simulator simulator;
     Environment environment
+    SimulationOptions options;
     Logger logger
 
     void setUp() {
+        options = new SimulationOptions()
+        options.setMultithreading(true)
+        options.setSwarmSize(500)
         logger = new Logger()
-        simulator = new Simulator(logger, 100)
+        simulator = new Simulator(logger, options)
         super.setUp()
     }
 

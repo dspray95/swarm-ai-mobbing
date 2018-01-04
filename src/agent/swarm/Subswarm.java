@@ -5,7 +5,7 @@ import agent.listener.ThreadDoneListener;
 
 import java.util.ArrayList;
 
-public class SubSwarm extends ArrayList<Apid> implements Runnable {
+public class Subswarm extends ArrayList<Apid> implements Runnable {
 
     private ThreadDoneListener listener;
 
@@ -13,7 +13,7 @@ public class SubSwarm extends ArrayList<Apid> implements Runnable {
      * A runnable version of swarm for use when multithreading
      * @param listener
      */
-    public SubSwarm(ThreadDoneListener listener){
+    public Subswarm(ThreadDoneListener listener){
         this.listener = listener;
     }
 
