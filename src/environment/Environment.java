@@ -12,12 +12,14 @@ import simulation.listener.TickerEventListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ForkJoinPool;
 
 public class Environment implements Serializable, TickerEventListener {
 
     transient private int environmentSize;
 
     transient private SimulationOptions options;
+    transient ForkJoinPool forkJoinPool;
     private Simulator simulator;
     private Swarm apidSwarm;
     private ArrayList<Vespid> vespidae;
@@ -28,7 +30,7 @@ public class Environment implements Serializable, TickerEventListener {
     transient private boolean threadsRunning; //If we currently have threads that are running
 
     public Environment(SimulationOptions... options) throws IllegalArgumentException{
-
+        this.forkJoinPool = ForkJoinPool.commonPool();
         this.vespidae = new ArrayList<>();
         this.pheromones = new ArrayList<>();
         this.tickerEventListeners = new ArrayList<>();
@@ -181,8 +183,13 @@ public class Environment implements Serializable, TickerEventListener {
 
     @Override
     public void tickerEvent() {
-            for(TickerEventListener listener : tickerEventListeners){
-                listener.tickerEvent();
+        if(!isMultithreading){
+            for(TickerEventListener listener : tickerEventListeners) {
+                    listener.tickerEvent();
+            }
+        }
+        else{
+            forkJoinPool.invoke(apidSwarm);
         }
     }
 }
