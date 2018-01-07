@@ -5,7 +5,7 @@ import agent.module.state.Guard;
 import agent.module.state.Mob;
 import agent.module.state.Worker;
 import agent.pheremone.Pheromone;
-import config.SimulationDefaults;
+import simulation.config.SimulationDefaults;
 import environment.Coordinate;
 import environment.Environment;
 

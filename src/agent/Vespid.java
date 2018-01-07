@@ -1,6 +1,6 @@
 package agent;
 
-import config.SimulationDefaults;
+import simulation.config.SimulationDefaults;
 import environment.Coordinate;
 import environment.Environment;
 

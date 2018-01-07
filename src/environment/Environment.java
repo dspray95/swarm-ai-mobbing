@@ -4,8 +4,8 @@ import agent.Apid;
 import agent.Vespid;
 import agent.pheremone.Pheromone;
 import agent.swarm.Swarm;
-import config.SimulationDefaults;
-import simulation.Simulator;
+import simulation.config.SimulationDefaults;
+import simulation.config.SimulationOptions;
 import simulation.listener.TickerEventListener;
 
 import java.io.Serializable;
@@ -16,23 +16,19 @@ public class Environment implements Serializable, TickerEventListener {
 
     transient private int environmentSize;
 
-    private Simulator simulator;
+    private SimulationOptions options;
     private Swarm apidSwarm;
     private ArrayList<Vespid> vespidae;
     private ArrayList<Pheromone> pheromones;
 
     transient private ArrayList<TickerEventListener> tickerEventListeners;
-    transient private boolean threadsRunning;
+    transient private boolean multithreading;
 
-    public Environment(int... argSwarmSize) throws IllegalArgumentException{
+    public Environment(SimulationOptions options) throws IllegalArgumentException{
         this.environmentSize = SimulationDefaults.ENVIRONMENT_SIZE;
-        //optional configuration for swarm size
-        if(argSwarmSize.length > 0){
-                populate(SimulationDefaults.SWARM_DEPLOYMENT_AREA, argSwarmSize[0]);
-        }
-        else{
-            this.apidSwarm = new Swarm(this);
-        }
+        this.options = options;
+        this.multithreading = options.isMultithreading();
+        populate();
         this.vespidae = new ArrayList<>();
         this.pheromones = new ArrayList<>();
         this.tickerEventListeners = new ArrayList<>();
@@ -40,35 +36,14 @@ public class Environment implements Serializable, TickerEventListener {
 
     /**
      * Creates agents on the simulation environment and maps them to an initial position
-     * @param  argsPopulation deployment area size, swarm size
      */
-    public void populate(int... argsPopulation) throws IllegalArgumentException{
+    public void populate() throws IllegalArgumentException{
         long startTime = System.nanoTime();
-        //TODO: Varargs validation function, reduce boilerplate
-        //varargs validation for deployment area
-        int deploymentArea;
-        if(argsPopulation.length > 0){
-            if(argsPopulation[0] > 0){
-                deploymentArea = argsPopulation[0];
-            } else{
-                throw new IllegalArgumentException("Deployment area must be greater than 0");
-            }
-        }
-        else{
-            deploymentArea = SimulationDefaults.SWARM_DEPLOYMENT_AREA;
-        }
-        //varargs validation for swarm size
-        if(argsPopulation.length > 1){
-            if(argsPopulation[1] > 0){
-                this.apidSwarm = new Swarm(this, argsPopulation[1]);
-            } else{
-                throw new IllegalArgumentException("Swarm size must be greater than 0");
-            }
-        }
-        else{
-            this.apidSwarm = new Swarm(this, SimulationDefaults.SWARM_SIZE);
-        }
+        int deploymentArea = SimulationDefaults.SWARM_DEPLOYMENT_AREA;
+        //Setup swarm
+        this.apidSwarm = new Swarm(this, options.getSwarmSize());
         registerTickerListener(apidSwarm);
+
         //Get the center of  the environment
         Coordinate environmentCenter = new Coordinate(
                 environmentSize/2,
@@ -81,7 +56,7 @@ public class Environment implements Serializable, TickerEventListener {
                  location = generateFuzzyCoordinate(environmentCenter, deploymentArea);
             }catch(IllegalArgumentException e){
                 System.out.print(e);
-                return; //TODO error recovery
+                return; //TODO error recovery for out of bounds
             }
             finally {
                 addApid(new Apid(location, this));
@@ -173,21 +148,43 @@ public class Environment implements Serializable, TickerEventListener {
         tickerEventListeners.remove(listener);
     }
 
-
-    public Simulator getSimulator(){return this.getSimulator();}
-    public Swarm getApidSwarm(){return this.apidSwarm;}
-    public ArrayList<Vespid> getVespidae(){return this.vespidae;}
-    public ArrayList<Pheromone> getPheromones(){return this.pheromones;}
-
-    public void setDoingMultiThreading(boolean bool){this.threadsRunning = bool;}
-
     @Override
     public void tickerEvent() {
-        if(!threadsRunning){
             for(TickerEventListener listener : tickerEventListeners){
                 listener.tickerEvent();
-            }
         }
+    }
+
+    public Swarm getApidSwarm() {
+        return apidSwarm;
+    }
+
+    public void setApidSwarm(Swarm apidSwarm) {
+        this.apidSwarm = apidSwarm;
+    }
+
+    public ArrayList<Vespid> getVespidae() {
+        return vespidae;
+    }
+
+    public void setVespidae(ArrayList<Vespid> vespidae) {
+        this.vespidae = vespidae;
+    }
+
+    public ArrayList<Pheromone> getPheromones() {
+        return pheromones;
+    }
+
+    public void setPheromones(ArrayList<Pheromone> pheromones) {
+        this.pheromones = pheromones;
+    }
+
+    public boolean isMultithreading() {
+        return multithreading;
+    }
+
+    public void setMultithreading(boolean multithreading) {
+        this.multithreading = multithreading;
     }
 }
 

@@ -2,7 +2,7 @@ package environment
 
 import agent.Agent
 import agent.swarm.Swarm
-import config.SimulationDefaults
+import simulation.config.SimulationDefaults
 
 class EnvironmentTest extends GroovyTestCase {
 

@@ -1,8 +1,9 @@
-package config;
+package simulation.config;
 
 public class SimulationDefaults {
 
     //Simulation
+    public static boolean MULTITHREADING = false;
     public static int SIMULATION_LENGTH = 4000; //Number of ticks to perform
     //Environment
     public static int ENVIRONMENT_SIZE = 5000;

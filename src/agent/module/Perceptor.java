@@ -5,7 +5,7 @@ import agent.Apid;
 import agent.Vespid;
 import agent.listener.ThreatEvent;
 import agent.pheremone.Pheromone;
-import config.SimulationDefaults;
+import simulation.config.SimulationDefaults;
 import environment.Coordinate;
 import environment.Environment;
 

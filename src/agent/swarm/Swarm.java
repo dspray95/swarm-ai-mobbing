@@ -2,7 +2,7 @@ package agent.swarm;
 
 import agent.Apid;
 import agent.listener.ThreadDoneListener;
-import config.SimulationDefaults;
+import simulation.config.SimulationDefaults;
 import environment.Environment;
 import simulation.listener.TickerEventListener;
 
@@ -23,6 +23,7 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Threa
 
     public Swarm(Environment environment){
         this.environment = environment;
+        this.multithreading = environment.isMultithreading();
         swarmSize = SimulationDefaults.SWARM_SIZE;
     }
 
@@ -52,7 +53,8 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Threa
              * so groups are 0-80, 80-160, 160-240, 240-320, 320-400
              * for subgroup i = 1...
              * bottom bound = 1 = (i-1 * 80) + 1
-             * upper bound = 80 = i * 80 (80 total indicies)
+             * upper bound = 80 = i * 80 (80 total indices)
+             * TODO Catch any agents missed by remainder
             */
             int lowerBound = ((i-1) * subswarmSize)+1;
             int upperBound = i*subswarmSize;
@@ -78,15 +80,14 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Threa
             for(SubSwarm subSwarm : subswarms){
                 subSwarm.run();
             }
-            environment.setDoingMultiThreading(true);
         }
     }
 
     @Override
+    //TODO not yet implemented
     public void threadDone(){
         numThreadsDone++;
         if(numThreadsDone == numThreads){
-            environment.setDoingMultiThreading(false);
             numThreadsDone = 0;
         }
     }

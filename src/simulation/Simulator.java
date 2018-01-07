@@ -1,19 +1,15 @@
 package simulation;
 
 import environment.Environment;
+import simulation.config.SimulationOptions;
 
 public class Simulator{
 
     private Environment environment;
     private Logger logger;
 
-    public Simulator(Logger logger, int... argsSwarmSize){
-        if(argsSwarmSize.length > 0){
-            environment = new Environment(argsSwarmSize[0]);
-        }
-        else{
-            environment = new Environment();
-        }
+    public Simulator(Logger logger, SimulationOptions options){;
+        environment = new Environment(options);
         this.logger = logger;
         //for some length of time Environment.notifytick()
     }
