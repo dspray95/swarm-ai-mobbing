@@ -52,12 +52,12 @@ public class Perceptor implements Serializable {
         Environment environment = parent.getEnvironment();
         //Loop through each object belonging to the environment to see if it is in perceptive range
         for(Apid apid : environment.getApidSwarm()){ //check for apidae
-            if(apid.getLocation().euclideanDistance(currentLocation) <= perceptionRadius){
+            if(apid.getLocation().squareDistance(currentLocation) <= perceptionRadius){
                 perceivedApidae.add(apid);
             }
         }
         for(Vespid vespid : environment.getVespidae()){ //check for vespidae, if detected broadcast an alert
-            if(vespid.getLocation().euclideanDistance(currentLocation) <= perceptionRadius){
+            if(vespid.getLocation().squareDistance(currentLocation) <= perceptionRadius){
                 perceivedVespidae.add(vespid);
                 if(threatObserver!=null) {
                     threatObserver.threatAlert();
@@ -65,7 +65,7 @@ public class Perceptor implements Serializable {
             }
         }
         for(Pheromone pheromone : environment.getPheromones()){ //Check for pheromones
-            if(pheromone.getLocation().euclideanDistance(currentLocation) <= perceptionRadius){
+            if(pheromone.getLocation().squareDistance(currentLocation) <= perceptionRadius){
                 perceivedPheremones.add(pheromone);
             }
         }

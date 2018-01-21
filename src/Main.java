@@ -1,4 +1,3 @@
-import environment.Environment;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,10 +12,15 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import simulation.Logger;
 import simulation.Simulator;
+import simulation.config.SimulationOptions;
+import visualiser.Visualiser;
 
 import java.util.ArrayList;
 
 public class Main extends Application {
+
+    //Config
+    static SimulationOptions options;
     //GUI controls
     static StackPane homePane;
     static Button btnRunSimulation;
@@ -25,6 +29,7 @@ public class Main extends Application {
     static Logger logger;
 
     public static void main(String args[]){
+        options = new SimulationOptions();
         homePane = new StackPane();
         btnRunSimulation = new Button();
         btnRunVisualiser = new Button();
@@ -71,13 +76,13 @@ public class Main extends Application {
             }catch (Exception e){
                 return;
             }
-            System.out.println("Running sim...");
-            Simulator simulator = new Simulator(logger);
+            System.out.println("Running simulation...");
+            Simulator simulator = new Simulator(logger, options);
             simulator.runSimulationForTicks(20);
         }
         else if(eventButton == btnRunVisualiser){
             System.out.println("Running visualiser...");
-            ArrayList<Environment> loadedStates = logger.loadStates();
+            Visualiser visualiser = new Visualiser(logger.loadStates());
         }
     }
 }

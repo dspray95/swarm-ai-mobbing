@@ -26,7 +26,7 @@ public class Pathfinder implements Serializable {
         Double bestDistance = 0d;
         boolean testingInitialised = false;
         for(Coordinate coordinate : neighbours){
-            double eucDistance = coordinate.euclideanDistance(target);
+            double eucDistance = coordinate.squareDistance(target);
             if(testingInitialised){
                 if(eucDistance < bestDistance){
                     bestDistance = eucDistance;

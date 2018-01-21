@@ -22,16 +22,14 @@ public class Environment implements Serializable, TickerEventListener {
     private ArrayList<Pheromone> pheromones;
 
     transient private ArrayList<TickerEventListener> tickerEventListeners;
-    transient private boolean multithreading;
 
     public Environment(SimulationOptions options) throws IllegalArgumentException{
         this.environmentSize = SimulationDefaults.ENVIRONMENT_SIZE;
         this.options = options;
-        this.multithreading = options.isMultithreading();
-        populate();
         this.vespidae = new ArrayList<>();
         this.pheromones = new ArrayList<>();
         this.tickerEventListeners = new ArrayList<>();
+        populate();
     }
 
     /**
@@ -179,12 +177,5 @@ public class Environment implements Serializable, TickerEventListener {
         this.pheromones = pheromones;
     }
 
-    public boolean isMultithreading() {
-        return multithreading;
-    }
-
-    public void setMultithreading(boolean multithreading) {
-        this.multithreading = multithreading;
-    }
 }
 

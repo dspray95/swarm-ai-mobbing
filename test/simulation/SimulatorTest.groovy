@@ -2,6 +2,7 @@ package simulation
 
 import environment.Environment
 import org.junit.Test
+import simulation.config.SimulationOptions
 
 class SimulatorTest extends GroovyTestCase {
 
@@ -10,8 +11,10 @@ class SimulatorTest extends GroovyTestCase {
     Logger logger
 
     void setUp() {
+        SimulationOptions options = new SimulationOptions()
+        options.setSwarmSize(100)
         logger = new Logger()
-        simulator = new Simulator(logger, 100)
+        simulator = new Simulator(logger, options)
         super.setUp()
     }
 

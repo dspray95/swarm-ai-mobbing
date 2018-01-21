@@ -61,16 +61,18 @@ public class Coordinate implements Serializable{
     }
 
     /**
-     * Calculates the euclidean distance between this coordinate and a target coordinate
+     * Calculates the distance between this coordinate and a target coordinate
      * Euclidean distance between two points a and b is defined as:
-     *   √(Xa - Xb)^2 + (Ya - Yb)^2
+     *   d = √(Xa - Xb)^2 + (Ya - Yb)^2
+     * So...
+     *   d^2 = (Xa - Xb)^2 + (Ya - Yb)^2
      *
      * @param target Coordinate object to measure distance to
      * @return double value of distance between this coordinate and target coordinate
      */
-    public double euclideanDistance(Coordinate target){
+    public double squareDistance(Coordinate target){
         double x = Math.pow(X() - target.X(), 2);
         double y = Math.pow(Y() - target.Y(), 2);
-        return Math.sqrt(x + y);
+        return (x + y);
     }
 }
