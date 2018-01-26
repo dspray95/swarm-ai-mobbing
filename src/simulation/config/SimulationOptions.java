@@ -1,6 +1,8 @@
 package simulation.config;
 
-public class SimulationOptions {
+import java.io.Serializable;
+
+public class SimulationOptions implements Serializable{
 
     int swarmSize;
 

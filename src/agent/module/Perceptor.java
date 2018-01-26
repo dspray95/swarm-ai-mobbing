@@ -43,18 +43,6 @@ public class Perceptor implements Serializable {
         this.perceivedVespidae = new ArrayList<>();
         this.perceivedPheremones = new ArrayList<>();
         Coordinate currentLocation = parent.getLocation();
-        //Get square bounds
-        ArrayList<Coordinate> squareBounds = new ArrayList<>();
-        //Setup bounds
-        int iBoundLower = parent.getLocation().X() - perceptionRadius;
-        int jBoundLower = parent.getLocation().Y() - perceptionRadius;
-        int iBoundLimit = iBoundLower + perceptionRadius*2;
-        int jBoundLimit = jBoundLower + perceptionRadius*2;
-        for(int i = iBoundLower; i < iBoundLimit; i++){
-            for(int j = jBoundLower; j < jBoundLimit; j++) {
-                squareBounds.add(new Coordinate(i, j));
-            }
-        }
         //Get a reference to the environment map
         Environment environment = parent.getEnvironment();
         //Loop through each object belonging to the environment to see if it is in perceptive range

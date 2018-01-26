@@ -28,7 +28,8 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
         this.aggression = SimulationDefaults. APID_AGGRESSION;
         this.state = new Worker(this);
         this.swarm = environment.getApidSwarm();
-        this.swarm.getWorkers().add(this);
+        this.swarm.add(this);
+        this.swarm.add(this);
         this.alertLevel = 0;
         this.location = location;
     }
@@ -37,11 +38,11 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
     public void judgeStateChange(){
         Random r = new Random();
         int numWorkers = perceptor.getPerceivedWorkers().size();
-        int numGuards = perceptor.getPerceivedGuards().size();
         int numMob = perceptor.getPerceivedMob().size();
         double chanceToJoin = 0;
         //Chance to join the guard group is affected by the number of perceived guards multiplied by the aggression
         if(state.getClass() == Worker.class){
+            int numGuards; //The number of guards currently perceived by this agent
             //If the alert level is high enough to cause alarm instantly change to guard state
             if(alertLevel >= 100){
                 this.state = new Guard(this);
@@ -49,14 +50,21 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
             }
             //If the alert level was not high enough to trigger guard state, run random chance of triggering guard state
             //based on aggression and perceived number of other guards
+            numGuards = perceptor.getPerceivedGuards().size();
+            if(numGuards > 0){
+                System.out.println("PERCIEVED " + numGuards + " GUARDS");
+            }
             if(numGuards <= SimulationDefaults.JOIN_GUARD_THRESHOLD) { //High rate of joining below the size threshold
-                chanceToJoin = (numGuards*aggression)*2;
+                chanceToJoin = numGuards/SimulationDefaults.JOIN_GUARD_THRESHOLD;
+                chanceToJoin = (chanceToJoin*aggression)*2;
             }
             else if(numGuards > SimulationDefaults.JOIN_GUARD_THRESHOLD) { //Lower rate of joining above the threshold
-                chanceToJoin = numGuards*aggression;
+                chanceToJoin = numGuards/SimulationDefaults.JOIN_GUARD_THRESHOLD;
+                chanceToJoin = chanceToJoin*aggression;
             }
             if(r.nextInt(100) <= chanceToJoin){
                 this.state = new Guard(this);
+//                System.out.println("Agent join GUARDS");
                 return;
             }
         }

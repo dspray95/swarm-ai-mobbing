@@ -13,6 +13,6 @@ public class Guard extends State implements Serializable {
 
     @Override
     public Coordinate getNextTarget() {
-        return null;
+        return randomWalk();
     }
 }

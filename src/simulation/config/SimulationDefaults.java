@@ -5,12 +5,10 @@ public class SimulationDefaults {
     //Simulation
     public static boolean MULTITHREADING = false;
     public static int SIMULATION_LENGTH = 4000; //Number of ticks to perform
-    //Environment
-    public static int ENVIRONMENT_SIZE = 5000;
+
     //Swarm
-    public static int SWARM_SIZE = 500;
-    public static int SWARM_DEPLOYMENT_AREA = 2500;
-    public static int JOIN_GUARD_THRESHOLD = 50;
+    public static int SWARM_SIZE = 100;
+    public static int JOIN_GUARD_THRESHOLD = SWARM_SIZE/10;
     //Agent
     public static int PERCEPTION_RADIUS = 100;
     //Apid
@@ -23,4 +21,7 @@ public class SimulationDefaults {
     public static int VESPID_SPEED = 1;
     public static double VESPID_HEAT_THRESHHOLD = 47; //Celsius
     public static double VESPID_AGGRESSION = 1d;
+    //Environment
+    public static int ENVIRONMENT_SIZE = SWARM_SIZE * 10;
+    public static int SWARM_DEPLOYMENT_AREA = ENVIRONMENT_SIZE/2;
 }

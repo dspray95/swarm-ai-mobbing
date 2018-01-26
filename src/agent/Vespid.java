@@ -16,7 +16,7 @@ public class Vespid extends Agent implements Serializable{
     }
 
     @Override
-    public int judgeStateChange(){
-        return 0;
+    public void judgeStateChange(){
+        return;
     }
 }

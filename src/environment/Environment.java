@@ -16,7 +16,7 @@ public class Environment implements Serializable, TickerEventListener {
 
     transient private int environmentSize;
 
-    private SimulationOptions options;
+    transient private SimulationOptions options;
     private Swarm apidSwarm;
     private ArrayList<Vespid> vespidae;
     private ArrayList<Pheromone> pheromones;

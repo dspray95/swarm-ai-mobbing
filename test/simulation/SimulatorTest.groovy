@@ -39,8 +39,8 @@ class SimulatorTest extends GroovyTestCase {
 
     @Test
     void testRunSimulationForLargeTicks(){
-        simulator.runSimulationForTicks(10000)
+        simulator.runSimulationForTicks(1000)
         ArrayList<Environment> loadedStates = logger.loadStates()
-        assertTrue(loadedStates.size() == 10000)
+        assertTrue(loadedStates.size() == 1000)
     }
 }
