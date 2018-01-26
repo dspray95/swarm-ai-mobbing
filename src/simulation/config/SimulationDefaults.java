@@ -10,6 +10,7 @@ public class SimulationDefaults {
     //Swarm
     public static int SWARM_SIZE = 500;
     public static int SWARM_DEPLOYMENT_AREA = 2500;
+    public static int JOIN_GUARD_THRESHOLD = 50;
     //Agent
     public static int PERCEPTION_RADIUS = 100;
     //Apid

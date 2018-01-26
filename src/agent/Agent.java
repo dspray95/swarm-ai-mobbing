@@ -36,7 +36,7 @@ public abstract class Agent implements Serializable, TickerEventListener {
      * Decide whether or not to change current state to another
      * @return
      */
-    public abstract State judgeStateChange();
+    public abstract void judgeStateChange();
 
     public void setLocation(Coordinate location){
         this.location = location;

@@ -1,7 +1,8 @@
 package agent;
 
 import agent.listener.ThreatEvent;
-import agent.module.state.State;
+import agent.module.state.Guard;
+import agent.module.state.Mob;
 import agent.module.state.Worker;
 import agent.pheremone.Pheromone;
 import agent.swarm.Swarm;
@@ -11,12 +12,9 @@ import simulation.config.SimulationDefaults;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Apid extends Agent implements ThreatEvent, Serializable {
-
-    public static final int STATE_WORKER = 0;
-    public static final int STATE_GUARD = 1;
-    public static final int STATE_MOB = 2;
 
     private Coordinate location;
     transient private int alertLevel;
@@ -36,16 +34,42 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
     }
 
     @Override
-    public State judgeStateChange(){
-        /**
-         * In order to decide whether to join guards --
-         * 1. Get perceived number of guards n
-         * 2. If n <= i (some integer) join guards
-         * 3. As n increases, chance to join c also increases
-         * 4. Perform random chance to join (modified by aggression a)
-         *
-         * So c = f(n, a)
-         */
+    public void judgeStateChange(){
+        Random r = new Random();
+        int numWorkers = perceptor.getPerceivedWorkers().size();
+        int numGuards = perceptor.getPerceivedGuards().size();
+        int numMob = perceptor.getPerceivedMob().size();
+        double chanceToJoin = 0;
+        //Chance to join the guard group is affected by the number of perceived guards multiplied by the aggression
+        if(state.getClass() == Worker.class){
+            //If the alert level is high enough to cause alarm instantly change to guard state
+            if(alertLevel >= 100){
+                this.state = new Guard(this);
+                return;
+            }
+            //If the alert level was not high enough to trigger guard state, run random chance of triggering guard state
+            //based on aggression and perceived number of other guards
+            if(numGuards <= SimulationDefaults.JOIN_GUARD_THRESHOLD) { //High rate of joining below the size threshold
+                chanceToJoin = (numGuards*aggression)*2;
+            }
+            else if(numGuards > SimulationDefaults.JOIN_GUARD_THRESHOLD) { //Lower rate of joining above the threshold
+                chanceToJoin = numGuards*aggression;
+            }
+            if(r.nextInt(100) <= chanceToJoin){
+                this.state = new Guard(this);
+                return;
+            }
+        }
+
+        else if(state.getClass() == Guard.class){
+
+        }
+
+        else if(state.getClass() == Mob.class){
+
+        }
+
+
         /**
          * In order to decide whether to leave guards and work --
          * 1. Get perceived number of guards n
@@ -56,9 +80,6 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
          *
          * So c = f(n, t, a) !!!
          */
-
-
-        return new Worker(this);
     }
 
     /**
