@@ -36,7 +36,7 @@ public abstract class Agent implements Serializable, TickerEventListener {
      * Decide whether or not to change current state to another
      * @return
      */
-    public abstract int judgeStateChange();
+    public abstract State judgeStateChange();
 
     public void setLocation(Coordinate location){
         this.location = location;
@@ -49,7 +49,16 @@ public abstract class Agent implements Serializable, TickerEventListener {
         mover.move(pathfinder.nextStep(location, state.getNextTarget()));
     }
 
-    public Environment getEnvironment(){return this.environment;}
-    public Coordinate getLocation(){ return location;}
-    public int getSpeed() { return speed; }
+    public Environment getEnvironment(){
+        return this.environment;
+    }
+    public Coordinate getLocation(){
+        return location;
+    }
+    public int getSpeed() {
+        return speed;
+    }
+    public State getState(){
+        return this.state;
+    }
 }

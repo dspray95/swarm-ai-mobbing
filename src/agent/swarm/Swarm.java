@@ -14,8 +14,15 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Seria
     private int swarmSize;
     transient private Environment environment;
 
+    transient private Swarm workers;
+    transient private Swarm guards;
+    transient private Swarm mob;
+
     public Swarm(Environment environment){
         this.environment = environment;
+        this.workers = new Swarm(environment);
+        this.guards = new Swarm(environment);
+        this.mob = new Swarm(environment);
         swarmSize = SimulationDefaults.SWARM_SIZE;
     }
 
@@ -24,9 +31,6 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Seria
         this.swarmSize = swarmSize;
     }
 
-
-    public int getSwarmSize(){ return this.swarmSize; }
-
     @Override
     public void tickerEvent() {
         for (Apid apid : this){
@@ -34,4 +38,17 @@ public class Swarm extends ArrayList<Apid> implements TickerEventListener, Seria
         }
     }
 
+    public int getSwarmSize(){ return this.swarmSize; }
+
+    public Swarm getWorkers() {
+        return workers;
+    }
+
+    public Swarm getGuards() {
+        return guards;
+    }
+
+    public Swarm getMob() {
+        return mob;
+    }
 }

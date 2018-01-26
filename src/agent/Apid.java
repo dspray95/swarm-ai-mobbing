@@ -1,13 +1,13 @@
 package agent;
 
 import agent.listener.ThreatEvent;
-import agent.module.state.Guard;
-import agent.module.state.Mob;
+import agent.module.state.State;
 import agent.module.state.Worker;
 import agent.pheremone.Pheromone;
-import simulation.config.SimulationDefaults;
+import agent.swarm.Swarm;
 import environment.Coordinate;
 import environment.Environment;
+import simulation.config.SimulationDefaults;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,6 +20,7 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
 
     private Coordinate location;
     transient private int alertLevel;
+    transient private Swarm swarm;
 
     public Apid(Coordinate location, Environment environment){
         super(location, environment);
@@ -27,36 +28,37 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
         this.speed = SimulationDefaults.APID_SPEED;
         this.heatResistance = SimulationDefaults.APID_HEAT_THRESHOLD;
         this.aggression = SimulationDefaults. APID_AGGRESSION;
-
         this.state = new Worker(this);
+        this.swarm = environment.getApidSwarm();
+        this.swarm.getWorkers().add(this);
         this.alertLevel = 0;
         this.location = location;
     }
 
     @Override
-    public int judgeStateChange(){
-        return STATE_WORKER;
-    }
+    public State judgeStateChange(){
+        /**
+         * In order to decide whether to join guards --
+         * 1. Get perceived number of guards n
+         * 2. If n <= i (some integer) join guards
+         * 3. As n increases, chance to join c also increases
+         * 4. Perform random chance to join (modified by aggression a)
+         *
+         * So c = f(n, a)
+         */
+        /**
+         * In order to decide whether to leave guards and work --
+         * 1. Get perceived number of guards n
+         * 2. If n >= i leave guards
+         * 3. As n increases chance to leave (c) also increases
+         * 4. As threat level t increases chance to leave decreases
+         * 5. perform random chance to leave (modified by aggression a)
+         *
+         * So c = f(n, t, a) !!!
+         */
 
-    /**
-     * Modifies the state to match the given integer value (0-2)
-     * If an incorrect value is given the state will resolve to the worker state
-     * @param targetState
-     */
-    public void changeState(int targetState){
-        state = null;
-        switch(targetState){
-            case 0:
-                state = new Worker(this);
-                break;
-            case 1:
-                state = new Guard(this);
-                break;
-            case 2:
-                state = new Mob(this);
-            default:
-                state = new Worker(this);
-        }
+
+        return new Worker(this);
     }
 
     /**
@@ -77,6 +79,5 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
     public void threatAlert() {
         setPheromone();
         alertLevel += 100;
-        changeState(STATE_GUARD);
     }
 }
