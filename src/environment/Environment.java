@@ -39,7 +39,7 @@ public class Environment implements Serializable, TickerEventListener {
         long startTime = System.nanoTime();
         int deploymentArea = SimulationDefaults.SWARM_DEPLOYMENT_AREA;
         //Setup swarm
-        this.apidSwarm = new Swarm(this, options.getSwarmSize());
+        apidSwarm = new Swarm(this);
         registerTickerListener(apidSwarm);
 
         //Get the center of  the environment
