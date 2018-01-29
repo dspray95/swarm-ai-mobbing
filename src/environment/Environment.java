@@ -49,28 +49,16 @@ public class Environment implements Serializable, TickerEventListener {
         );
         //Create apidae and add them to swarm
         for(int i = 0; i < apidSwarm.getSwarmSize(); i++){
-            Coordinate location = new Coordinate();
             try {
-                 location = generateFuzzyCoordinate(environmentCenter, deploymentArea);
+                Coordinate location = generateFuzzyCoordinate(environmentCenter, deploymentArea);
+                apidSwarm.addApid(new Apid(location, this));
             }catch(IllegalArgumentException e){
                 System.out.print(e);
                 return; //TODO error recovery for out of bounds
             }
-            finally {
-                addApid(new Apid(location, this));
-            }
         }
         long endTime = System.nanoTime();
         System.out.println("Populated in: " + ((endTime - startTime)/10000) + "ms"); //TODO log file
-    }
-
-    /**
-     * Add a pre-created apid to the environment space
-     * @param apid Apid agent to add
-     */
-    public void addApid(Apid apid){
-        //TODO validation
-        apidSwarm.add(apid);
     }
 
     public void addVespid(Vespid vespid){
@@ -81,30 +69,6 @@ public class Environment implements Serializable, TickerEventListener {
     public void addPheromone(Pheromone pheromone){
         this.pheromones.add(pheromone);
         registerTickerListener(pheromone);
-    }
-    /**
-     * Moves the provided coordinate by a vector of 1 in a random cardinal direction
-     * @param coordinate coordinate to nudge
-     * @return new coordinate
-     */
-    public Coordinate coordinateNudge(Coordinate coordinate){
-        Random r = new Random();
-        int direction = r.nextInt(3);
-        switch(direction){
-            case 0:
-                coordinate.setX(coordinate.X()+1);
-                break;
-            case 1:
-                coordinate.setX(coordinate.X()-1);
-                break;
-            case 2:
-                coordinate.setY(coordinate.Y()+1);
-                break;
-            case 3:
-                coordinate.setY(coordinate.Y()-1);
-                break;
-        }
-        return coordinate;
     }
 
     /**

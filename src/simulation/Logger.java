@@ -14,7 +14,7 @@ public class Logger implements Serializable{
     String filepath;
     String filename;
     Environment environmentState;
-    ArrayList<Object> storedStates;
+    ArrayList<Environment> storedStates;
 
     public Logger() throws Exception{
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
@@ -32,7 +32,7 @@ public class Logger implements Serializable{
         storedStates = new ArrayList<>();
     }
 
-    public void addStoredState(Object object){
+    public void addStoredState(Environment object){
         storedStates.add(object);
     }
 

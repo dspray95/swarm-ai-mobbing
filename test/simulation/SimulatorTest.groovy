@@ -20,7 +20,6 @@ class SimulatorTest extends GroovyTestCase {
 
     void tearDown() {
         simulator = null
-        environment = null
         logger = null
     }
 
@@ -39,8 +38,8 @@ class SimulatorTest extends GroovyTestCase {
 
     @Test
     void testRunSimulationForLargeTicks(){
-        simulator.runSimulationForTicks(1000)
+        simulator.runSimulationForTicks(500)
         ArrayList<Environment> loadedStates = logger.loadStates()
-        assertTrue(loadedStates.size() == 1000)
+        assertTrue(loadedStates.size() == 500)
     }
 }

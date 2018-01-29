@@ -46,7 +46,7 @@ public class Perceptor implements Serializable {
         //Get a reference to the environment map
         Environment environment = parent.getEnvironment();
         //Loop through each object belonging to the environment to see if it is in perceptive range
-        for(Apid apid : environment.getApidSwarm()){ //check for apidae
+        for(Apid apid : environment.getApidSwarm().getSwarm()){ //check for apidae
             if(apid.getLocation().squareDistance(currentLocation) <= perceptionRadius){
                 if(apid.getState().getClass() == Worker.class){
                     this.perceivedWorkers.add(apid);

@@ -5,7 +5,6 @@ import agent.module.state.Guard;
 import agent.module.state.Mob;
 import agent.module.state.Worker;
 import agent.pheremone.Pheromone;
-import agent.swarm.Swarm;
 import environment.Coordinate;
 import environment.Environment;
 import simulation.config.SimulationDefaults;
@@ -18,7 +17,6 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
 
     private Coordinate location;
     transient private int alertLevel;
-    transient private Swarm swarm;
 
     public Apid(Coordinate location, Environment environment){
         super(location, environment);
@@ -27,9 +25,6 @@ public class Apid extends Agent implements ThreatEvent, Serializable {
         this.heatResistance = SimulationDefaults.APID_HEAT_THRESHOLD;
         this.aggression = SimulationDefaults. APID_AGGRESSION;
         this.state = new Worker(this);
-        this.swarm = environment.getApidSwarm();
-        this.swarm.add(this);
-        this.swarm.add(this);
         this.alertLevel = 0;
         this.location = location;
     }
